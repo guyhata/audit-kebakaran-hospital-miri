@@ -668,31 +668,6 @@
                 </div>
             </div>
 
-            <!-- Modal Amaran Pengesahan Padam Borang (Default pada "Batal") -->
-            <div id="delete-confirm-modal" class="hidden fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4 no-print" role="dialog" aria-modal="true" aria-labelledby="delete-modal-title">
-                <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 space-y-4">
-                    <div class="flex items-start gap-3.5">
-                        <div class="p-3 bg-rose-100 text-rose-700 rounded-xl shrink-0">
-                            <i data-lucide="alert-triangle" class="w-6 h-6"></i>
-                        </div>
-                        <div class="space-y-1.5">
-                            <h3 id="delete-modal-title" class="text-base font-bold text-slate-900">Padam Borang Audit?</h3>
-                            <p id="delete-modal-desc" class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                                Adakah anda pasti mahu memadam borang ini? Tindakan ini tidak boleh dikembalikan.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-end gap-2.5 pt-3 border-t border-slate-100">
-                        <button type="button" id="btn-delete-cancel" onclick="closeDeleteModal()" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-900 hover:bg-slate-800 text-white ring-2 ring-offset-2 ring-slate-900 transition-all">
-                            Batal
-                        </button>
-                        <button type="button" id="btn-delete-proceed" onclick="executeDeleteConfirmed()" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-rose-50 hover:bg-rose-600 text-rose-700 hover:text-white border border-rose-200 transition-colors">
-                            Teruskan
-                        </button>
-                    </div>
-                </div>
-            </div>
-
             <!-- Modal Tetapan Awan & Pemindahan Data (Untuk Google Sheets & Drive di Netlify) -->
             <div id="cloud-config-modal" class="hidden fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4 no-print" role="dialog" aria-modal="true">
                 <div class="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl border border-slate-200 space-y-4 max-h-[90vh] overflow-y-auto">
@@ -922,6 +897,35 @@
         </section>
 
     </main>
+
+    <!-- Modal Amaran Pengesahan Padam Borang (Global Pop-up - Default pada "Batal") -->
+    <div id="delete-confirm-modal" class="hidden fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4 no-print" role="dialog" aria-modal="true" aria-labelledby="delete-modal-title">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 space-y-4">
+            <div class="flex items-start gap-3.5">
+                <div class="p-3 bg-rose-100 text-rose-700 rounded-xl shrink-0">
+                    <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+                </div>
+                <div class="space-y-1.5">
+                    <h3 id="delete-modal-title" class="text-base font-bold text-slate-900">Padam Borang Audit?</h3>
+                    <p id="delete-modal-desc" class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        Adakah anda pasti mahu memadam borang ini? Tindakan ini tidak boleh dikembalikan.
+                    </p>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center justify-end gap-2 pt-3 border-t border-slate-100">
+                <button type="button" id="btn-delete-view" onclick="viewRecordFromDeleteModal()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 transition-colors mr-auto">
+                    <i data-lucide="eye" class="w-4 h-4"></i>
+                    <span>Lihat Laporan</span>
+                </button>
+                <button type="button" id="btn-delete-cancel" onclick="closeDeleteModal()" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-900 hover:bg-slate-800 text-white ring-2 ring-offset-2 ring-slate-900 transition-all">
+                    Batal
+                </button>
+                <button type="button" id="btn-delete-proceed" onclick="executeDeleteConfirmed()" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-rose-50 hover:bg-rose-600 text-rose-700 hover:text-white border border-rose-200 transition-colors">
+                    Teruskan
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer Aplikasi -->
     <footer class="bg-white border-t border-slate-200 py-4 px-4 text-center text-xs text-slate-500 no-print">
@@ -2222,16 +2226,39 @@ function doPost(e) {
             const modal = document.getElementById('delete-confirm-modal');
             if (!modal) return;
             modal.classList.remove('hidden');
+            if (window.lucide) lucide.createIcons();
             setTimeout(() => {
                 const cancelBtn = document.getElementById('btn-delete-cancel');
                 if (cancelBtn) cancelBtn.focus();
             }, 30);
         }
 
+        function viewRecordFromDeleteModal() {
+            const target = pendingDeleteTarget;
+            closeDeleteModal();
+            if (!target) return;
+            if (target.type === 'record' && target.id) {
+                loadRecordIntoView(target.id);
+            } else if (target.type === 'current') {
+                switchTab('report');
+            }
+        }
+
         function closeDeleteModal() {
             pendingDeleteTarget = null;
             const modal = document.getElementById('delete-confirm-modal');
             if (modal) modal.classList.add('hidden');
+        }
+
+        function viewRecordFromDeleteModal() {
+            const target = pendingDeleteTarget;
+            closeDeleteModal();
+            if (!target) return;
+            if (target.type === 'record' && target.id) {
+                loadRecordIntoView(target.id);
+            } else if (target.type === 'current') {
+                switchTab('report');
+            }
         }
 
         function executeDeleteConfirmed() {
