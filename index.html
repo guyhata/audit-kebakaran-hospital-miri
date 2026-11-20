@@ -473,11 +473,11 @@
                         <input type="text" id="sign-penyedia-jawatan" value="" placeholder="Cop Jawatan" class="w-full rounded-lg border-slate-300 border px-3 py-2 text-sm bg-white">
                         <div class="pt-1">
                             <div class="flex items-center justify-between mb-1">
-                                <label class="block text-[11px] font-bold text-slate-700">Tandatangan Digital Juruaudit (Lukis di bawah)</label>
+                                <label class="block text-[11px] font-bold text-slate-700">Tandatangan Digital Juruaudit (Lukis di bawah) <span id="auditor-sig-status-pill" class="hidden ml-1.5 text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full">&#10003; Dirakam</span></label>
                                 <button type="button" onclick="clearAuditorSignaturePad()" class="text-[11px] font-semibold text-rose-600 hover:underline">Padam Tandatangan</button>
                             </div>
                             <div class="border-2 border-dashed border-slate-300 rounded-xl bg-white overflow-hidden relative">
-                                <canvas id="auditor-signature-canvas" width="420" height="110" class="w-full h-28 cursor-crosshair touch-none block"></canvas>
+                                <canvas id="auditor-signature-canvas" width="420" height="120" style="touch-action: none;" class="w-full h-32 cursor-crosshair touch-none block select-none"></canvas>
                             </div>
                         </div>
                     </div>
@@ -2273,11 +2273,12 @@ function doPost(e) {
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
             let drawing = false;
+            let strokeCount = 0;
 
             canvas._resizeSigCanvas = function(preserveDataUrl) {
                 if (canvas.id === 'auditor-signature-canvas') {
                     ctx.strokeStyle = '#0f172a';
-                    ctx.lineWidth = 3.2;
+                    ctx.lineWidth = 3.5;
                     ctx.lineCap = 'round';
                     ctx.lineJoin = 'round';
                     if (preserveDataUrl) {
@@ -2294,7 +2295,7 @@ function doPost(e) {
                     canvas.width = w;
                     canvas.height = h;
                     ctx.strokeStyle = '#0f172a';
-                    ctx.lineWidth = 2.6;
+                    ctx.lineWidth = 2.8;
                     ctx.lineCap = 'round';
                     ctx.lineJoin = 'round';
                     if (preserveDataUrl) {
@@ -2307,37 +2308,50 @@ function doPost(e) {
 
             function getPos(e) {
                 const rect = canvas.getBoundingClientRect();
-                const touch = e.touches ? e.touches[0] : e;
+                const point = (e.touches && e.touches.length > 0)
+                    ? e.touches[0]
+                    : (e.changedTouches && e.changedTouches.length > 0)
+                        ? e.changedTouches[0]
+                        : e;
                 const scaleX = rect.width > 0 ? (canvas.width / rect.width) : 1;
                 const scaleY = rect.height > 0 ? (canvas.height / rect.height) : 1;
                 return {
-                    x: (touch.clientX - rect.left) * scaleX,
-                    y: (touch.clientY - rect.top) * scaleY
+                    x: (point.clientX - rect.left) * scaleX,
+                    y: (point.clientY - rect.top) * scaleY
                 };
             }
 
             function startDraw(e) {
-                e.preventDefault();
+                if (e.cancelable) e.preventDefault();
                 if (canvas.width === 0 || canvas.height === 0) {
                     canvas._resizeSigCanvas();
                 }
                 ctx.strokeStyle = '#0f172a';
-                ctx.lineWidth = canvas.id === 'auditor-signature-canvas' ? 3.2 : 2.6;
+                ctx.lineWidth = canvas.id === 'auditor-signature-canvas' ? 3.5 : 2.8;
                 ctx.lineCap = 'round';
                 ctx.lineJoin = 'round';
                 drawing = true;
+                strokeCount++;
                 if (onDrawCallback) onDrawCallback(true);
                 const pos = getPos(e);
                 ctx.beginPath();
                 ctx.moveTo(pos.x, pos.y);
+                ctx.lineTo(pos.x + 0.1, pos.y + 0.1);
+                ctx.stroke();
+                if (canvas.id === 'auditor-signature-canvas') {
+                    captureAuditorSignature();
+                }
             }
 
             function moveDraw(e) {
                 if (!drawing) return;
-                e.preventDefault();
+                if (e.cancelable) e.preventDefault();
                 const pos = getPos(e);
                 ctx.lineTo(pos.x, pos.y);
                 ctx.stroke();
+                if (canvas.id === 'auditor-signature-canvas') {
+                    captureAuditorSignature();
+                }
             }
 
             function endDraw() {
@@ -2348,12 +2362,27 @@ function doPost(e) {
                 }
             }
 
-            canvas.addEventListener('mousedown', startDraw);
-            canvas.addEventListener('mousemove', moveDraw);
-            window.addEventListener('mouseup', endDraw);
-            canvas.addEventListener('touchstart', startDraw, { passive: false });
-            canvas.addEventListener('touchmove', moveDraw, { passive: false });
-            canvas.addEventListener('touchend', endDraw);
+            if (window.PointerEvent) {
+                canvas.addEventListener('pointerdown', startDraw);
+                canvas.addEventListener('pointermove', moveDraw);
+                window.addEventListener('pointerup', endDraw);
+                window.addEventListener('pointercancel', endDraw);
+            } else {
+                canvas.addEventListener('mousedown', startDraw);
+                canvas.addEventListener('mousemove', moveDraw);
+                window.addEventListener('mouseup', endDraw);
+                canvas.addEventListener('touchstart', startDraw, { passive: false });
+                canvas.addEventListener('touchmove', moveDraw, { passive: false });
+                window.addEventListener('touchend', endDraw);
+                window.addEventListener('touchcancel', endDraw);
+            }
+        }
+
+        function updateAuditorSigPill(isRecorded) {
+            const pill = document.getElementById('auditor-sig-status-pill');
+            if (pill) {
+                pill.classList.toggle('hidden', !isRecorded);
+            }
         }
 
         function captureAuditorSignature() {
@@ -2361,9 +2390,10 @@ function doPost(e) {
             if (!canvas || canvas.width === 0 || canvas.height === 0) return;
             try {
                 const data = canvas.toDataURL('image/png');
-                if (data && data.length > 200) {
+                if (data && data.length > 100) {
                     verificationState.auditorSignatureDataUrl = data;
                     hasDrawnAuditorSig = true;
+                    updateAuditorSigPill(true);
                 }
             } catch (e) {}
         }
@@ -2377,6 +2407,7 @@ function doPost(e) {
             if (auditorCanvas && auditorCanvas._resizeSigCanvas) {
                 auditorCanvas._resizeSigCanvas(verificationState.auditorSignatureDataUrl);
             }
+            updateAuditorSigPill(Boolean(verificationState.auditorSignatureDataUrl));
         }
 
         function clearAuditorSignaturePad() {
@@ -2387,6 +2418,7 @@ function doPost(e) {
             }
             hasDrawnAuditorSig = false;
             verificationState.auditorSignatureDataUrl = '';
+            updateAuditorSigPill(false);
         }
 
         function getAuditorSignatureDataUrl() {
@@ -2399,6 +2431,7 @@ function doPost(e) {
         function loadAuditorSignatureToCanvas(dataUrl) {
             const canvas = document.getElementById('auditor-signature-canvas');
             hasDrawnAuditorSig = Boolean(dataUrl);
+            updateAuditorSigPill(Boolean(dataUrl));
             if (!canvas) return;
             if (canvas.width > 0 && canvas.height > 0) {
                 const ctx = canvas.getContext('2d');
