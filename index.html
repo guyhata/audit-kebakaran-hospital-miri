@@ -658,7 +658,7 @@
                         <span class="text-xs text-slate-700 leading-relaxed">Saya mengesahkan bahawa penemuan audit keselamatan kebakaran bagi unit/wad ini telah disemak dan diperakukan untuk tindakan susulan.</span>
                     </label>
 
-                    <div class="flex justify-end gap-2.5 pt-2">
+                    <div class="flex flex-wrap items-center justify-end gap-2.5 pt-2">
                         <button type="button" onclick="closeSignatureModal()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700">Batal</button>
                         <button type="button" onclick="confirmDigitalVerification()" class="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm">
                             <i data-lucide="check-circle" class="w-4 h-4"></i>
@@ -2248,17 +2248,6 @@ function doPost(e) {
             pendingDeleteTarget = null;
             const modal = document.getElementById('delete-confirm-modal');
             if (modal) modal.classList.add('hidden');
-        }
-
-        function viewRecordFromDeleteModal() {
-            const target = pendingDeleteTarget;
-            closeDeleteModal();
-            if (!target) return;
-            if (target.type === 'record' && target.id) {
-                loadRecordIntoView(target.id);
-            } else if (target.type === 'current') {
-                switchTab('report');
-            }
         }
 
         function executeDeleteConfirmed() {
