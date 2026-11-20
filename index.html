@@ -477,7 +477,7 @@
                                 <button type="button" onclick="clearAuditorSignaturePad()" class="text-[11px] font-semibold text-rose-600 hover:underline">Padam Tandatangan</button>
                             </div>
                             <div class="border-2 border-dashed border-slate-300 rounded-xl bg-white overflow-hidden relative">
-                                <canvas id="auditor-signature-canvas" class="w-full h-24 cursor-crosshair touch-none"></canvas>
+                                <canvas id="auditor-signature-canvas" width="420" height="110" class="w-full h-28 cursor-crosshair touch-none block"></canvas>
                             </div>
                         </div>
                     </div>
@@ -1506,12 +1506,6 @@ function doPost(e) {
             if (tabName === 'form') {
                 renderAuditForm();
                 renderFormPhotos();
-                setTimeout(() => {
-                    const auditorCanvas = document.getElementById('auditor-signature-canvas');
-                    if (auditorCanvas && auditorCanvas._resizeSigCanvas) {
-                        auditorCanvas._resizeSigCanvas(verificationState.auditorSignatureDataUrl);
-                    }
-                }, 40);
             }
             if (tabName === 'report') renderOfficialReport();
             if (window.lucide) lucide.createIcons();
@@ -2281,14 +2275,26 @@ function doPost(e) {
             let drawing = false;
 
             canvas._resizeSigCanvas = function(preserveDataUrl) {
+                if (canvas.id === 'auditor-signature-canvas') {
+                    ctx.strokeStyle = '#0f172a';
+                    ctx.lineWidth = 3.2;
+                    ctx.lineCap = 'round';
+                    ctx.lineJoin = 'round';
+                    if (preserveDataUrl) {
+                        const img = new Image();
+                        img.onload = () => ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                        img.src = preserveDataUrl;
+                    }
+                    return;
+                }
                 const rect = canvas.getBoundingClientRect();
                 const w = rect.width > 0 ? rect.width : (canvas.parentElement ? canvas.parentElement.clientWidth : 340);
-                const h = rect.height > 0 ? rect.height : 96;
+                const h = rect.height > 0 ? rect.height : 120;
                 if (w > 0 && h > 0) {
                     canvas.width = w;
                     canvas.height = h;
                     ctx.strokeStyle = '#0f172a';
-                    ctx.lineWidth = canvas.id === 'auditor-signature-canvas' ? 3.2 : 2.4;
+                    ctx.lineWidth = 2.6;
                     ctx.lineCap = 'round';
                     ctx.lineJoin = 'round';
                     if (preserveDataUrl) {
@@ -2302,7 +2308,12 @@ function doPost(e) {
             function getPos(e) {
                 const rect = canvas.getBoundingClientRect();
                 const touch = e.touches ? e.touches[0] : e;
-                return { x: touch.clientX - rect.left, y: touch.clientY - rect.top };
+                const scaleX = rect.width > 0 ? (canvas.width / rect.width) : 1;
+                const scaleY = rect.height > 0 ? (canvas.height / rect.height) : 1;
+                return {
+                    x: (touch.clientX - rect.left) * scaleX,
+                    y: (touch.clientY - rect.top) * scaleY
+                };
             }
 
             function startDraw(e) {
@@ -2310,6 +2321,10 @@ function doPost(e) {
                 if (canvas.width === 0 || canvas.height === 0) {
                     canvas._resizeSigCanvas();
                 }
+                ctx.strokeStyle = '#0f172a';
+                ctx.lineWidth = canvas.id === 'auditor-signature-canvas' ? 3.2 : 2.6;
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
                 drawing = true;
                 if (onDrawCallback) onDrawCallback(true);
                 const pos = getPos(e);
@@ -2328,7 +2343,7 @@ function doPost(e) {
             function endDraw() {
                 if (!drawing) return;
                 drawing = false;
-                if (canvas === document.getElementById('auditor-signature-canvas')) {
+                if (canvas.id === 'auditor-signature-canvas') {
                     captureAuditorSignature();
                 }
             }
@@ -2345,13 +2360,7 @@ function doPost(e) {
             const canvas = document.getElementById('auditor-signature-canvas');
             if (!canvas || canvas.width === 0 || canvas.height === 0) return;
             try {
-                const tempCanvas = document.createElement('canvas');
-                tempCanvas.width = 420;
-                tempCanvas.height = 130;
-                const tCtx = tempCanvas.getContext('2d');
-                tCtx.clearRect(0, 0, tempCanvas.width, tempCanvas.height);
-                tCtx.drawImage(canvas, 0, 0, tempCanvas.width, tempCanvas.height);
-                const data = tempCanvas.toDataURL('image/png');
+                const data = canvas.toDataURL('image/png');
                 if (data && data.length > 200) {
                     verificationState.auditorSignatureDataUrl = data;
                     hasDrawnAuditorSig = true;
@@ -2366,7 +2375,7 @@ function doPost(e) {
             const auditorCanvas = document.getElementById('auditor-signature-canvas');
             bindCanvasDrawing(auditorCanvas, (drawn) => { hasDrawnAuditorSig = drawn; });
             if (auditorCanvas && auditorCanvas._resizeSigCanvas) {
-                setTimeout(() => auditorCanvas._resizeSigCanvas(verificationState.auditorSignatureDataUrl), 50);
+                auditorCanvas._resizeSigCanvas(verificationState.auditorSignatureDataUrl);
             }
         }
 
