@@ -1,0 +1,2975 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit Keselamatan Kebakaran Hospital Miri (2026)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        /* Gaya Cetakan Rasmi A4 */
+        @media print {
+            body {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+                font-size: 11pt;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+            .print-container {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+            table {
+                page-break-inside: auto;
+                border-collapse: collapse !important;
+                width: 100% !important;
+            }
+            tr {
+                page-break-inside: avoid;
+                page-break-after: auto;
+            }
+            th, td {
+                border: 1px solid #1e293b !important;
+                padding: 6px 8px !important;
+            }
+            thead {
+                display: table-header-group;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Bar Navigasi Utama (Tidak dicetak) -->
+    <header class="bg-gradient-to-r from-red-800 via-red-700 to-rose-800 text-white shadow-lg sticky top-0 z-40 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <!-- Identiti Rasmi Hospital Miri -->
+                <div class="flex items-center gap-3.5">
+                    <!-- Logo Rasmi Hospital Miri (SVG Terperinci) -->
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white p-0.5 shadow-md shrink-0 flex items-center justify-center overflow-hidden border-2 border-amber-300">
+                        <svg viewBox="0 0 220 220" class="w-full h-full" xmlns="http://www.w3.org/2000/svg" aria-label="Logo Hospital Miri">
+                            <defs>
+                                <clipPath id="logoClipNav">
+                                    <circle cx="110" cy="110" r="103"/>
+                                </clipPath>
+                                <path id="topArcNav" d="M 30,96 A 82,82 0 0,1 190,96"/>
+                                <path id="botArcNav" d="M 20,126 A 92,92 0 0,0 200,126"/>
+                            </defs>
+                            <!-- Latar Bulatan Biru Langit -->
+                            <circle cx="110" cy="110" r="104" fill="#52c4f7" stroke="#0f172a" stroke-width="3.5"/>
+                            <!-- Jalur Beralun Merah & Putih (Dalam Klip Bulatan) -->
+                            <g clip-path="url(#logoClipNav)" stroke="#0f172a" stroke-width="1.3">
+                                <path d="M 0,92 Q 55,106 110,92 T 220,92 L 220,100 Q 165,114 110,100 T 0,100 Z" fill="#dc2626"/>
+                                <path d="M 0,100 Q 55,114 110,100 T 220,100 L 220,108 Q 165,122 110,108 T 0,108 Z" fill="#ffffff"/>
+                                <path d="M 0,108 Q 55,122 110,108 T 220,108 L 220,116 Q 165,130 110,116 T 0,116 Z" fill="#dc2626"/>
+                                <path d="M 0,116 Q 55,130 110,116 T 220,116 L 220,124 Q 165,138 110,124 T 0,124 Z" fill="#ffffff"/>
+                                <path d="M 0,124 Q 55,138 110,124 T 220,124 L 220,132 Q 165,146 110,132 T 0,132 Z" fill="#dc2626"/>
+                                <path d="M 0,132 Q 55,146 110,132 T 220,132 L 220,140 Q 165,154 110,140 T 0,140 Z" fill="#ffffff"/>
+                                <path d="M 0,140 Q 55,154 110,140 T 220,140 L 220,148 Q 165,162 110,148 T 0,148 Z" fill="#dc2626"/>
+                                <path d="M 0,148 Q 55,162 110,148 T 220,148 L 220,155 Q 165,169 110,155 T 0,155 Z" fill="#ffffff"/>
+                                <path d="M 0,155 Q 55,169 110,155 T 220,155 L 220,162 Q 165,176 110,162 T 0,162 Z" fill="#dc2626"/>
+                            </g>
+                            <!-- Lambang Perubatan Bersayap & Bulan Sabit -->
+                            <g transform="translate(110, 62)">
+                                <path d="M -3,-24 A 7,7 0 1,0 5,-21 A 5.2,5.2 0 1,1 -3,-24 Z" fill="#b91c1c" stroke="#0f172a" stroke-width="0.9"/>
+                                <path d="M -2,-11 C -15,-22 -30,-17 -28,-8 C -20,-10 -10,-8 -2,-5 Z" fill="#b91c1c" stroke="#0f172a" stroke-width="1.2"/>
+                                <path d="M 2,-11 C 15,-22 30,-17 28,-8 C 20,-10 10,-8 2,-5 Z" fill="#b91c1c" stroke="#0f172a" stroke-width="1.2"/>
+                                <rect x="-2" y="-15" width="4" height="34" rx="2" fill="#b91c1c" stroke="#0f172a" stroke-width="1.1"/>
+                                <path d="M -6,-5 C 8,0 -8,7 6,12 M 6,-5 C -8,0 8,7 -6,12" fill="none" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+                            </g>
+                            <!-- 4 Figura Petugas Kesihatan Kuning -->
+                            <g fill="#facc15" stroke="#0f172a" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round">
+                                <!-- 1. Doktor mengangkat tangan kiri & stetoskop -->
+                                <circle cx="62" cy="95" r="7.5"/>
+                                <path d="M 52,72 C 49,84 51,95 55,103 L 55,147 L 62,147 L 62,126 L 64,147 L 70,147 L 70,104 L 66,102 C 62,95 60,84 57,72 Z"/>
+                                <path d="M 59,103 Q 63,112 65,116" fill="none" stroke="#0f172a" stroke-width="1.6"/>
+                                <circle cx="65" cy="117" r="2.2" fill="#0f172a"/>
+                                <!-- 2. Petugas lelaki -->
+                                <circle cx="88" cy="91" r="8"/>
+                                <path d="M 78,103 C 77,114 78,132 79,151 L 86,151 L 88,128 L 90,151 L 97,151 L 97,115 L 105,119 L 106,114 L 96,103 Z"/>
+                                <!-- 3. Jururawat mendukung bayi -->
+                                <circle cx="114" cy="94" r="7.5"/>
+                                <path d="M 106,85 L 121,82 L 122,87 L 107,89 Z" fill="#facc15"/>
+                                <path d="M 105,104 L 103,155 L 111,155 L 114,132 L 117,155 L 124,155 L 123,104 Z"/>
+                                <path d="M 102,118 C 107,111 118,111 122,117 C 119,124 106,125 102,118 Z" fill="#fde047"/>
+                                <circle cx="119" cy="114" r="3.5" fill="#fde047"/>
+                                <!-- 4. Jururawat mengangkat tangan kanan -->
+                                <circle cx="138" cy="92" r="7.5"/>
+                                <path d="M 131,82 L 145,82 L 144,87 L 132,87 Z" fill="#facc15"/>
+                                <path d="M 129,103 L 129,151 L 136,151 L 138,129 L 140,151 L 147,151 L 147,106 C 151,96 154,84 152,72 L 147,73 C 148,83 145,93 142,102 Z"/>
+                            </g>
+                            <!-- Teks Melengkung Atas & Bawah -->
+                            <text font-size="18.5" font-weight="700" fill="#0f172a" letter-spacing="2.2">
+                                <textPath href="#topArcNav" startOffset="50%" text-anchor="middle">HOSPITAL MIRI</textPath>
+                            </text>
+                            <text font-size="11.2" font-weight="700" fill="#0f172a" letter-spacing="0.45">
+                                <textPath href="#botArcNav" startOffset="50%" text-anchor="middle">melayan anda... layanan kekeluargaan</textPath>
+                            </text>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="text-[11px] font-bold uppercase tracking-wider bg-amber-400 text-slate-950 px-2.5 py-0.5 rounded-md shadow-xs">Jabatan Kesihatan Negeri Sarawak</span>
+                            <span class="text-xs text-red-100 font-medium">Edisi 2026</span>
+                            <button type="button" onclick="openCloudConfigModal()" id="cloud-sync-badge" title="Klik untuk tetapan sambungan Google Sheets & Drive" class="inline-flex items-center gap-1.5 text-[11px] font-semibold bg-amber-950/80 text-amber-300 border border-amber-400/40 px-2.5 py-0.5 rounded-full hover:brightness-110 transition-all cursor-pointer">
+                                <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                                <span>Tetapkan Google Sheets</span>
+                            </button>
+                        </div>
+                        <h1 class="text-base sm:text-xl font-extrabold tracking-tight leading-tight mt-0.5">Hospital Miri • Audit Keselamatan Kebakaran</h1>
+                    </div>
+                </div>
+
+                <!-- Tab Navigasi -->
+                <nav class="flex bg-red-950/50 p-1 rounded-xl border border-red-400/20 self-start md:self-auto">
+                    <button onclick="switchTab('dashboard')" id="tab-dashboard" class="tab-btn flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all bg-white text-red-800 shadow-sm">
+                        <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+                        <span>Dashboard</span>
+                    </button>
+                    <button onclick="switchTab('form')" id="tab-form" class="tab-btn flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all text-red-100 hover:text-white">
+                        <i data-lucide="clipboard-check" class="w-4 h-4"></i>
+                        <span>Borang Audit</span>
+                    </button>
+                    <button onclick="switchTab('report')" id="tab-report" class="tab-btn flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all text-red-100 hover:text-white">
+                        <i data-lucide="file-text" class="w-4 h-4"></i>
+                        <span>Laporan Rasmi</span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Notifikasi Toast (Gantian Alert) -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 no-print"></div>
+
+    <!-- Kandungan Utama -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- ===================================================================== -->
+        <!-- 1. PAPARAN DASHBOARD PEMERIKSAAN                                      -->
+        <!-- ===================================================================== -->
+        <section id="view-dashboard" class="space-y-6">
+            <!-- Baris Tajuk & Tindakan Pantas -->
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 bg-white p-5 rounded-2xl shadow-sm border border-slate-200/80">
+                <div>
+                    <h2 class="text-lg sm:text-xl font-bold text-slate-900">Papan Pemuka Pematuhan Keselamatan Kebakaran</h2>
+                    <p class="text-sm text-slate-500 mt-0.5">Pemantauan semasa berdasarkan Senarai Semak Audit Keselamatan Kebakaran Hospital Miri 2026.</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2.5">
+                    <button onclick="startNewAudit()" class="inline-flex items-center gap-2 bg-red-700 hover:bg-red-800 text-white text-sm font-semibold px-4 py-2.5 rounded-xl shadow-sm transition-colors">
+                        <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                        <span>Audit Baharu</span>
+                    </button>
+                    <button onclick="fetchRecordsFromGoogleSheets(false)" id="btn-manual-sync" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold px-4 py-2.5 rounded-xl shadow-sm transition-colors">
+                        <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                        <span>Segerak Sekarang</span>
+                    </button>
+                    <button onclick="switchTab('report')" class="inline-flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-sm font-semibold px-4 py-2.5 rounded-xl transition-colors">
+                        <i data-lucide="printer" class="w-4 h-4"></i>
+                        <span>Lihat Laporan</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Kad Metrik KPI Utama -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- KPI 1: Skor Pematuhan Audit Semasa -->
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200/80 flex flex-col justify-between">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Skor Pematuhan Semasa</span>
+                        <div class="p-2 bg-emerald-50 text-emerald-600 rounded-xl">
+                            <i data-lucide="shield-check" class="w-5 h-5"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="flex items-baseline gap-2">
+                            <span id="kpi-score" class="text-3xl font-extrabold text-slate-900">85%</span>
+                            <span id="kpi-status-badge" class="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">Memuaskan</span>
+                        </div>
+                        <p id="kpi-dept-label" class="text-xs text-slate-500 mt-1.5 truncate">Wad Perubatan Lelaki (Wad 4A)</p>
+                    </div>
+                </div>
+
+                <!-- KPI 2: Item Patuh (Ada / Ya) -->
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200/80 flex flex-col justify-between">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Kriteria Patuh (Ada/Ya)</span>
+                        <div class="p-2 bg-blue-50 text-blue-600 rounded-xl">
+                            <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="flex items-baseline gap-2">
+                            <span id="kpi-ya-count" class="text-3xl font-extrabold text-blue-700">28</span>
+                            <span id="kpi-total-items" class="text-sm font-medium text-slate-400">/ 33 item dinilai</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-1.5">Merangkumi Bahagian A, B & C</p>
+                    </div>
+                </div>
+
+                <!-- KPI 3: Ketidakpatuhan (Tiada) -->
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200/80 flex flex-col justify-between">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Penemuan Tidak Patuh</span>
+                        <div class="p-2 bg-rose-50 text-rose-600 rounded-xl">
+                            <i data-lucide="alert-triangle" class="w-5 h-5"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="flex items-baseline gap-2">
+                            <span id="kpi-tiada-count" class="text-3xl font-extrabold text-rose-600">5</span>
+                            <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-rose-100 text-rose-800">Tindakan Perlu</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-1.5">Memerlukan cadangan penambahbaikan</p>
+                    </div>
+                </div>
+
+                <!-- KPI 4: Inventori Fasiliti Kebakaran -->
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200/80 flex flex-col justify-between">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Unit Fasiliti Direkod</span>
+                        <div class="p-2 bg-amber-50 text-amber-600 rounded-xl">
+                            <i data-lucide="fire-extinguisher" class="w-5 h-5"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="flex items-baseline gap-2">
+                            <span id="kpi-equipment-total" class="text-3xl font-extrabold text-slate-900">24</span>
+                            <span class="text-sm font-medium text-slate-500">unit peralatan</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-1.5">Pemadam Api, Pengesan, Lampu & Hos</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid Analitik Bahagian & Isu Kritikal -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Pecahan Pematuhan Mengikut Bahagian -->
+                <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80">
+                    <div class="flex items-center justify-between mb-5">
+                        <div>
+                            <h3 class="text-base font-bold text-slate-900">Pematuhan Mengikut Bahagian Audit</h3>
+                            <p class="text-xs text-slate-500">Analisis prestasi bagi Bahagian A, Bahagian B, dan Bahagian C</p>
+                        </div>
+                        <span class="text-xs font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-lg">Format MGH 2026</span>
+                    </div>
+
+                    <div id="section-breakdown-bars" class="space-y-5">
+                        <!-- Dijana secara dinamik oleh JS -->
+                    </div>
+
+                    <!-- Ringkasan Fasiliti & Latihan -->
+                    <div class="mt-6 pt-5 border-t border-slate-100 grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/60">
+                            <p class="text-[11px] font-semibold text-slate-500 uppercase">Pemadam Api</p>
+                            <p id="stat-extinguisher" class="text-lg font-bold text-slate-900 mt-0.5">4 Unit</p>
+                            <p class="text-[11px] text-slate-500">Dry Powder & CO2</p>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/60">
+                            <p class="text-[11px] font-semibold text-slate-500 uppercase">Pengesan Asap/Haba</p>
+                            <p id="stat-detectors" class="text-lg font-bold text-slate-900 mt-0.5">10 Unit</p>
+                            <p class="text-[11px] text-slate-500">Berfungsi / Blink</p>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/60">
+                            <p class="text-[11px] font-semibold text-slate-500 uppercase">Lampu Kecemasan</p>
+                            <p id="stat-emglight" class="text-lg font-bold text-slate-900 mt-0.5">6 Unit</p>
+                            <p class="text-[11px] text-slate-500">Dua kuasa karan</p>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/60">
+                            <p class="text-[11px] font-semibold text-slate-500 uppercase">Anggota Terlatih</p>
+                            <p id="stat-trained" class="text-lg font-bold text-slate-900 mt-0.5">28 Orang</p>
+                            <p class="text-[11px] text-slate-500">Ceramah & Fire Drill</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Senarai Ketidakpatuhan (Tindakan Segera) -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 flex flex-col">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-rose-600 animate-pulse"></span>
+                            <h3 class="text-base font-bold text-slate-900">Isu Ketidakpatuhan (Tiada)</h3>
+                        </div>
+                        <span id="noncompliance-badge" class="text-xs font-bold bg-rose-100 text-rose-800 px-2.5 py-0.5 rounded-full">5 Isu</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mb-4">Perkara yang ditanda <strong>Tiada</strong> dan memerlukan tindakan pembetulan segera:</p>
+
+                    <div id="noncompliance-list" class="space-y-3 flex-1 overflow-y-auto max-h-80 pr-1">
+                        <!-- Dijana secara dinamik oleh JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rekod Audit Jabatan / Unit / Wad Hospital Miri -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200/80 overflow-hidden">
+                <div class="p-5 sm:p-6 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                    <div>
+                        <h3 class="text-base font-bold text-slate-900">Rekod Pemeriksaan Jabatan / Unit / Wad (Hospital Miri)</h3>
+                        <p class="text-xs text-slate-500 mt-0.5">Klik mana-mana rekod untuk memuatkan ke dalam borang dan menjana laporan rasmi.</p>
+                    </div>
+                    <div class="text-xs font-medium text-slate-600 sm:text-right leading-relaxed">
+                        <div>Talian Kecemasan: <strong class="text-slate-900">085-422 973 (JBPM Lopeng)</strong></div>
+                        <div>Talian Operator: <strong class="text-slate-900">0 atau 8086 (Talian Kecemasan)</strong></div>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-600 text-xs uppercase tracking-wider border-b border-slate-200">
+                                <th class="py-3.5 px-4 font-bold">Jabatan / Unit / Wad</th>
+                                <th class="py-3.5 px-4 font-bold">Tarikh Audit</th>
+                                <th class="py-3.5 px-4 font-bold">Juruaudit</th>
+                                <th class="py-3.5 px-4 font-bold">Skor Pematuhan</th>
+                                <th class="py-3.5 px-4 font-bold">Status Pengesahan</th>
+                                <th class="py-3.5 px-4 font-bold text-right">Tindakan</th>
+                            </tr>
+                        </thead>
+                        <tbody id="audit-records-tbody" class="divide-y divide-slate-100 text-sm">
+                            <!-- Dijana secara dinamik oleh JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================== -->
+        <!-- 2. BORANG AUDIT DIGITAL (FORMAT BORANG MGH 2026)                      -->
+        <!-- ===================================================================== -->
+        <section id="view-form" class="hidden space-y-6">
+            <!-- Maklumat Kawalan Audit -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-5 border-b border-slate-200">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-red-700 bg-red-50 px-2.5 py-1 rounded-md">Borang Audit Kebakaran MGH Edisi 2026</span>
+                        <h2 class="text-xl font-bold text-slate-900 mt-2">Senarai Semak Audit Keselamatan Kebakaran Hospital Miri</h2>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="requestDeleteCurrentForm()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 transition-colors">
+                            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                            <span>Padam / Kosongkan Borang</span>
+                        </button>
+                        <button onclick="saveCurrentAuditToRecords()" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm transition-colors">
+                            <i data-lucide="save" class="w-3.5 h-3.5"></i>
+                            <span>Simpan & Kemaskini Dashboard</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 4 Medan Utama Header PDF -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-5">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Jabatan / Unit / Wad</label>
+                        <input type="text" id="meta-jabatan" value="" oninput="syncMetadata()" placeholder="Contoh: Wad 4A / Unit Kecemasan" class="w-full rounded-xl border-slate-300 border px-3.5 py-2.5 text-sm focus:ring-2 focus:ring-red-600 focus:border-red-600 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Tarikh Audit</label>
+                        <input type="date" id="meta-tarikh" value="" oninput="syncMetadata()" class="w-full rounded-xl border-slate-300 border px-3.5 py-2.5 text-sm focus:ring-2 focus:ring-red-600 focus:border-red-600 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Nama Juruaudit</label>
+                        <input type="text" id="meta-juruaudit" value="" oninput="syncMetadata()" placeholder="Nama penuh juruaudit" class="w-full rounded-xl border-slate-300 border px-3.5 py-2.5 text-sm focus:ring-2 focus:ring-red-600 focus:border-red-600 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Auditee (Wakil Unit/Wad)</label>
+                        <input type="text" id="meta-auditee" value="" oninput="syncMetadata()" placeholder="Nama ketua / wakil unit" class="w-full rounded-xl border-slate-300 border px-3.5 py-2.5 text-sm focus:ring-2 focus:ring-red-600 focus:border-red-600 outline-none">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bar Kemajuan Pengisian -->
+            <div class="bg-slate-900 text-white rounded-2xl p-4 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2 bg-red-600 rounded-xl">
+                        <i data-lucide="list-checks" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-300 font-medium">Status Penilaian Semasa</p>
+                        <p id="form-progress-text" class="text-sm font-bold">0 daripada 33 kriteria telah dinilai (Skor: 0%)</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button onclick="markAllYes()" class="text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-emerald-400 border border-slate-700 px-3 py-2 rounded-xl transition-colors">
+                        Tanda Semua "Ada / Ya"
+                    </button>
+                    <button onclick="switchTab('report')" class="text-xs font-semibold bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl transition-colors">
+                        Jana Laporan Lengkap &rarr;
+                    </button>
+                </div>
+            </div>
+
+            <!-- Bekas Jadual Borang Bahagian A, B & C -->
+            <div id="audit-form-sections" class="space-y-6">
+                <!-- Dijana secara dinamik oleh JS -->
+            </div>
+
+            <!-- Bahagian Lampiran Gambar Pemeriksaan (Kamera / Muat Naik & Ulasan) -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80 space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-slate-200 pb-3.5">
+                    <div>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-md">Bukti Bergambar</span>
+                        <h3 class="text-base font-bold text-slate-900 mt-1">Lampiran Gambar Pemeriksaan & Ulasan</h3>
+                        <p class="text-xs text-slate-500">Ambil gambar menggunakan kamera peranti atau pilih fail gambar untuk dimasukkan ke dalam Lampiran Laporan Rasmi.</p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2 shrink-0">
+                        <label class="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white text-xs font-semibold px-4 py-2.5 rounded-xl shadow-sm cursor-pointer transition-colors">
+                            <i data-lucide="camera" class="w-4 h-4"></i>
+                            <span>Ambil Gambar (Kamera)</span>
+                            <input type="file" accept="image/*" capture="environment" multiple onchange="handlePhotoUpload(event)" class="hidden">
+                        </label>
+                        <label class="inline-flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold px-4 py-2.5 rounded-xl border border-slate-300 cursor-pointer transition-colors">
+                            <i data-lucide="image-plus" class="w-4 h-4"></i>
+                            <span>Pilih Fail Gambar</span>
+                            <input type="file" accept="image/*" multiple onchange="handlePhotoUpload(event)" class="hidden">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Senarai Gambar & Ruang Ulasan -->
+                <div id="form-photos-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Dijana secara dinamik oleh JS -->
+                </div>
+            </div>
+
+            <!-- Ulasan Juruaudit, Cadangan / Usul & Pengesahan -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80 space-y-5">
+                <h3 class="text-base font-bold text-slate-900 border-b border-slate-200 pb-3">Rumusan & Pengesahan Laporan Audit</h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Ulasan Juruaudit</label>
+                        <textarea id="meta-ulasan" rows="3" class="w-full rounded-xl border-slate-300 border p-3 text-sm focus:ring-2 focus:ring-red-600 outline-none" placeholder="Masukkan ulasan keseluruhan juruaudit..."></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Cadangan / Usul</label>
+                        <textarea id="meta-cadangan" rows="3" class="w-full rounded-xl border-slate-300 border p-3 text-sm focus:ring-2 focus:ring-red-600 outline-none" placeholder="Masukkan cadangan atau usul penambahbaikan..."></textarea>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 pt-2">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
+                        <p class="text-xs font-bold uppercase text-slate-500">Laporan Disediakan Oleh (Juruaudit)</p>
+                        <input type="text" id="sign-penyedia-nama" value="" placeholder="Nama Penuh Penyedia Laporan" class="w-full rounded-lg border-slate-300 border px-3 py-2 text-sm bg-white">
+                        <input type="text" id="sign-penyedia-jawatan" value="" placeholder="Cop Jawatan" class="w-full rounded-lg border-slate-300 border px-3 py-2 text-sm bg-white">
+                        <div class="pt-1">
+                            <div class="flex items-center justify-between mb-1">
+                                <label class="block text-[11px] font-bold text-slate-700">Tandatangan Digital Juruaudit (Lukis di bawah)</label>
+                                <button type="button" onclick="clearAuditorSignaturePad()" class="text-[11px] font-semibold text-rose-600 hover:underline">Padam Tandatangan</button>
+                            </div>
+                            <div class="border-2 border-dashed border-slate-300 rounded-xl bg-white overflow-hidden relative">
+                                <canvas id="auditor-signature-canvas" class="w-full h-24 cursor-crosshair touch-none"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
+                        <p class="text-xs font-bold uppercase text-slate-500">Disahkan Oleh (Ketua Jabatan / Unit / Wad)</p>
+                        <input type="text" id="sign-pengesah-nama" value="" placeholder="Nama Penuh Pengesah" class="w-full rounded-lg border-slate-300 border px-3 py-2 text-sm bg-white">
+                        <input type="text" id="sign-pengesah-jawatan" value="" placeholder="Cop Jawatan" class="w-full rounded-lg border-slate-300 border px-3 py-2 text-sm bg-white">
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                            <div>
+                                <label class="block text-[11px] font-semibold text-slate-600 mb-1">No. WhatsApp Pengesah</label>
+                                <input type="tel" id="sign-pengesah-whatsapp" value="" placeholder="Contoh: 0128801234" class="w-full rounded-lg border-slate-300 border px-3 py-1.5 text-sm bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-semibold text-slate-600 mb-1">E-mel Rasmi Pengesah</label>
+                                <input type="email" id="sign-pengesah-emel" value="" placeholder="nama@moh.gov.my" class="w-full rounded-lg border-slate-300 border px-3 py-1.5 text-sm bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-semibold text-slate-600 mb-1">Tarikh Pengesahan (Automatik)</label>
+                                <input type="text" id="sign-pengesah-tarikh" value="" readonly placeholder="Dijana automatik selepas disahkan" class="w-full rounded-lg border-slate-200 border px-3 py-1.5 text-sm bg-slate-100 text-slate-600 cursor-not-allowed">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap justify-end gap-3 pt-4 border-t border-slate-100">
+                    <button onclick="saveCurrentAuditToRecords()" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-900 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors">
+                        <i data-lucide="save" class="w-4 h-4"></i>
+                        <span>Simpan Draf</span>
+                    </button>
+                    <button onclick="submitForVerification()" class="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white text-sm font-semibold px-5 py-2.5 rounded-xl shadow-sm transition-colors">
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                        <span>Hantar (Submit) untuk Pengesahan</span>
+                    </button>
+                    <button onclick="saveAndViewReport()" class="inline-flex items-center gap-2 bg-red-700 hover:bg-red-800 text-white text-sm font-semibold px-6 py-2.5 rounded-xl shadow-sm transition-colors">
+                        <i data-lucide="file-check" class="w-4 h-4"></i>
+                        <span>Papar Laporan Rasmi</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================== -->
+        <!-- 3. PAPARAN LAPORAN RASMI (SEDIA CETAK / PDF / PENGESAHAN / G-DRIVE)    -->
+        <!-- ===================================================================== -->
+        <section id="view-report" class="hidden space-y-5">
+            <!-- Bar Kawalan Laporan (Tidak dicetak) -->
+            <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex flex-wrap items-center justify-between gap-4 no-print">
+                <div class="flex items-center gap-3">
+                    <button onclick="switchTab('form')" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 px-3.5 py-2 rounded-xl transition-colors">
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                        <span>Kembali ke Borang</span>
+                    </button>
+                    <div>
+                        <span class="text-xs sm:text-sm text-slate-600 font-medium block">Format Rasmi: <strong>Borang Audit Kebakaran MGH Edisi 2026</strong></span>
+                        <span id="report-status-subtitle" class="text-xs text-amber-700 font-semibold">Status: Menunggu Pengesahan Digital</span>
+                    </div>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="openSignatureModal()" id="btn-verify-report" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl shadow-sm transition-colors">
+                        <i data-lucide="pen-tool" class="w-4 h-4"></i>
+                        <span>Sahkan Secara Digital</span>
+                    </button>
+                    <button onclick="unlockReportForEditing()" id="btn-unlock-edit-report" class="hidden inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl shadow-sm transition-colors">
+                        <i data-lucide="unlock" class="w-4 h-4"></i>
+                        <span>Buka Kunci & Edit Semula</span>
+                    </button>
+                    <button onclick="saveToGoogleDrive()" id="btn-save-gdrive-pdf" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl shadow-sm transition-colors">
+                        <i data-lucide="file-up" class="w-4 h-4"></i>
+                        <span>Simpan PDF ke Google Drive</span>
+                    </button>
+                    <button onclick="window.print()" class="inline-flex items-center gap-2 bg-red-700 hover:bg-red-800 text-white text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl shadow-sm transition-colors">
+                        <i data-lucide="printer" class="w-4 h-4"></i>
+                        <span>Cetak / PDF</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Banner Makluman Tindakan Pegawai Pengesah (Muncul selepas Submit) -->
+            <div id="verifier-action-banner" class="hidden bg-amber-50 border-2 border-amber-300 rounded-2xl p-4 sm:p-5 shadow-sm no-print">
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                    <div class="flex items-start gap-3">
+                        <div class="p-2.5 bg-amber-100 text-amber-800 rounded-xl shrink-0 mt-0.5">
+                            <i data-lucide="bell-ring" class="w-5 h-5"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <span class="text-xs font-extrabold uppercase tracking-wider bg-amber-200 text-amber-900 px-2 py-0.5 rounded">Menunggu Pengesahan</span>
+                                <h4 class="text-sm font-bold text-slate-900">Makluman untuk Pegawai Pengesah: <span id="banner-pengesah-nama" class="text-red-800">-</span></h4>
+                            </div>
+                            <p class="text-xs text-slate-700 leading-relaxed">
+                                Juruaudit telah menghantar laporan audit ini untuk semakan dan pengesahan rasmi. Pilih saluran pemakluman di sebelah atau klik <strong>Sahkan Secara Digital</strong> jika pegawai pengesah berada bersama anda.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2 shrink-0">
+                        <button onclick="sendVerifierWhatsApp()" class="inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold px-3.5 py-2.5 rounded-xl shadow-sm transition-colors">
+                            <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+                            <span>Hantar Terus WhatsApp</span>
+                        </button>
+                        <button onclick="sendVerifierEmail()" class="inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-3.5 py-2.5 rounded-xl shadow-sm transition-colors">
+                            <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+                            <span>Notifikasi E-mel</span>
+                        </button>
+                        <button onclick="copyVerifierMessage()" class="inline-flex items-center gap-1.5 bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 text-xs font-semibold px-3.5 py-2.5 rounded-xl transition-colors">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                            <span>Salin Teks</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Tandatangan & Pengesahan Digital (Tidak dicetak) -->
+            <div id="signature-modal" class="hidden fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4 no-print">
+                <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 space-y-4 max-h-[92vh] overflow-y-auto">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                        <div class="flex items-center gap-2.5">
+                            <div class="p-2 bg-emerald-100 text-emerald-700 rounded-xl">
+                                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <div class="flex flex-wrap items-center gap-1.5">
+                                    <h3 class="text-base font-bold text-slate-900">Pengesahan Digital Laporan Audit</h3>
+                                    <span id="modal-audit-ref-badge" class="text-[11px] font-mono font-bold bg-slate-900 text-amber-300 px-2 py-0.5 rounded">Ruj: MGH-AUD-2026</span>
+                                </div>
+                                <p class="text-xs text-slate-500">Hospital Miri • Jabatan Kesihatan Negeri Sarawak</p>
+                            </div>
+                        </div>
+                        <button onclick="closeSignatureModal()" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg">
+                            <i data-lucide="x" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+
+                    <!-- Notis Keselamatan Rasmi Hospital Miri -->
+                    <div class="bg-blue-50/90 border border-blue-200 rounded-xl p-3 space-y-1">
+                        <div class="flex items-center gap-1.5 text-xs font-extrabold text-blue-950">
+                            <i data-lucide="lock" class="w-3.5 h-3.5 text-blue-700 shrink-0"></i>
+                            <span>Notis Keselamatan Rasmi • Unit Keselamatan Kebakaran Hospital Miri</span>
+                        </div>
+                        <p class="text-[11px] text-blue-900 leading-relaxed">
+                            Pautan pengesahan sahih bagi <strong id="modal-ref-unit-label">-</strong> (Juruaudit: <strong id="modal-ref-auditor-label">-</strong>). Sistem rasmi ini <strong>TIDAK</strong> akan meminta kata laluan e-mel, TAC bank, atau maklumat peribadi sensitif.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Nama Pegawai Pengesah</label>
+                            <input type="text" id="modal-pengesah-nama" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Tarikh Pengesahan (Automatik)</label>
+                            <input type="text" id="modal-pengesah-tarikh" readonly class="w-full rounded-xl border border-slate-200 bg-slate-100 text-slate-700 font-semibold px-3 py-2 text-sm cursor-not-allowed">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Jawatan / Cop Rasmi</label>
+                        <input type="text" id="modal-pengesah-jawatan" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm">
+                    </div>
+
+                    <!-- Pengesahan Identiti Pengesah (Keselamatan Pautan) -->
+                    <div id="modal-security-check-box" class="bg-amber-50 border border-amber-200 rounded-xl p-3 space-y-1.5">
+                        <label class="block text-xs font-bold text-amber-900">Pengesahan Keselamatan: Masukkan 4 Digit Terakhir No. Telefon atau E-mel Rasmi Pengesah</label>
+                        <input type="text" id="modal-pengesah-verify-pin" placeholder="Contoh: 1234 atau nama@moh.gov.my" class="w-full rounded-lg border border-amber-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-amber-500 outline-none">
+                        <p class="text-[11px] text-amber-800">Memastikan hanya pegawai pengesah yang dinamakan pada borang boleh meluluskan laporan ini.</p>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between mb-1">
+                            <label class="block text-xs font-bold text-slate-700">Tandatangan Digital (Lukis menggunakan tetikus / jari)</label>
+                            <button type="button" onclick="clearSignaturePad()" class="text-xs font-semibold text-rose-600 hover:underline">Padam Tandatangan</button>
+                        </div>
+                        <div class="border-2 border-dashed border-slate-300 rounded-xl bg-slate-50 overflow-hidden">
+                            <canvas id="signature-canvas" class="w-full h-36 cursor-crosshair touch-none"></canvas>
+                        </div>
+                    </div>
+
+                    <label class="flex items-start gap-2.5 bg-emerald-50/70 p-3 rounded-xl border border-emerald-200 cursor-pointer">
+                        <input type="checkbox" id="modal-verify-consent" checked class="mt-0.5 rounded text-emerald-600">
+                        <span class="text-xs text-slate-700 leading-relaxed">Saya mengesahkan bahawa penemuan audit keselamatan kebakaran bagi unit/wad ini telah disemak dan diperakukan untuk tindakan susulan.</span>
+                    </label>
+
+                    <div class="flex justify-end gap-2.5 pt-2">
+                        <button type="button" onclick="closeSignatureModal()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700">Batal</button>
+                        <button type="button" onclick="confirmDigitalVerification()" class="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm">
+                            <i data-lucide="check-circle" class="w-4 h-4"></i>
+                            <span>Sahkan & Cop Rasmi</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Amaran Pengesahan Padam Borang (Default pada "Batal") -->
+            <div id="delete-confirm-modal" class="hidden fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4 no-print" role="dialog" aria-modal="true" aria-labelledby="delete-modal-title">
+                <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 space-y-4">
+                    <div class="flex items-start gap-3.5">
+                        <div class="p-3 bg-rose-100 text-rose-700 rounded-xl shrink-0">
+                            <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+                        </div>
+                        <div class="space-y-1.5">
+                            <h3 id="delete-modal-title" class="text-base font-bold text-slate-900">Padam Borang Audit?</h3>
+                            <p id="delete-modal-desc" class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                Adakah anda pasti mahu memadam borang ini? Tindakan ini tidak boleh dikembalikan.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-end gap-2.5 pt-3 border-t border-slate-100">
+                        <button type="button" id="btn-delete-cancel" onclick="closeDeleteModal()" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-900 hover:bg-slate-800 text-white ring-2 ring-offset-2 ring-slate-900 transition-all">
+                            Batal
+                        </button>
+                        <button type="button" id="btn-delete-proceed" onclick="executeDeleteConfirmed()" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-rose-50 hover:bg-rose-600 text-rose-700 hover:text-white border border-rose-200 transition-colors">
+                            Teruskan
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Tetapan Awan & Pemindahan Data (Untuk Google Sheets & Drive di Netlify) -->
+            <div id="cloud-config-modal" class="hidden fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4 no-print" role="dialog" aria-modal="true">
+                <div class="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl border border-slate-200 space-y-4 max-h-[90vh] overflow-y-auto">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                        <div class="flex items-center gap-2.5">
+                            <div class="p-2 bg-emerald-100 text-emerald-700 rounded-xl">
+                                <i data-lucide="sheet" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold text-slate-900">Sambungan Google Sheets & Google Drive</h3>
+                                <p class="text-xs text-slate-500">Selaraskan data & gambar antara telefon dan komputer tanpa Firebase</p>
+                            </div>
+                        </div>
+                        <button type="button" onclick="closeCloudConfigModal()" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg">
+                            <i data-lucide="x" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+
+                    <!-- Langkah 1: Kod Apps Script -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2.5">
+                        <div class="flex items-center justify-between gap-2">
+                            <p class="text-xs font-bold text-slate-900">Langkah 1: Salin Kod Google Apps Script ke Google Sheets Anda</p>
+                            <button type="button" onclick="copyAppsScriptCode()" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg">
+                                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                                <span>Salin Kod Skrip</span>
+                            </button>
+                        </div>
+                        <p class="text-[11px] text-slate-600 leading-relaxed">
+                            Buka Google Sheets baharu di dalam folder Drive anda &rarr; klik <strong>Extensions &gt; Apps Script</strong> &rarr; padam kod asal dan tampal kod di bawah &rarr; klik <strong>Deploy &gt; New deployment &gt; Web app</strong> (Who has access: <strong>Anyone</strong>) &rarr; salin <strong>Web app URL</strong>.
+                        </p>
+                        <textarea id="apps-script-template-box" readonly rows="6" class="w-full rounded-lg border border-slate-300 bg-white p-2.5 text-[11px] font-mono text-slate-700 outline-none"></textarea>
+                    </div>
+
+                    <!-- Langkah 2: Tampal Web App URL -->
+                    <div class="space-y-2">
+                        <label class="block text-xs font-bold text-slate-900">Langkah 2: Tampal Pautan Web App URL Google Sheets Di Sini</label>
+                        <input type="url" id="custom-gas-url-input" placeholder="https://script.google.com/macros/s/AKfycb.../exec" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-xs font-mono text-slate-800 focus:ring-2 focus:ring-emerald-600 outline-none">
+                    </div>
+
+                    <!-- Sandaran Pantas .json -->
+                    <div class="bg-blue-50/70 p-3.5 rounded-xl border border-blue-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+                        <div>
+                            <p class="text-xs font-bold text-slate-800">Sandaran Manual (Pilihan Tambahan)</p>
+                            <p class="text-[11px] text-slate-600">Eksport atau import fail rekod <code>.json</code> secara terus.</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 shrink-0">
+                            <button type="button" onclick="exportAllAuditsJson()" class="inline-flex items-center gap-1.5 bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 text-xs font-semibold px-3 py-1.5 rounded-lg">
+                                <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                                <span>Eksport</span>
+                            </button>
+                            <label class="inline-flex items-center gap-1.5 bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 text-xs font-semibold px-3 py-1.5 rounded-lg cursor-pointer">
+                                <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                                <span>Import</span>
+                                <input type="file" accept=".json,application/json" onchange="importAllAuditsJson(event)" class="hidden">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between pt-2 border-t border-slate-100">
+                        <button type="button" onclick="clearCustomGasUrl()" class="text-xs font-semibold text-rose-600 hover:underline">Putuskan Sambungan</button>
+                        <div class="flex gap-2">
+                            <button type="button" onclick="closeCloudConfigModal()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700">Tutup</button>
+                            <button type="button" onclick="saveCustomGasUrl()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-emerald-700 hover:bg-emerald-800 text-white shadow-sm">Simpan & Segerak Sekarang</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Helaian Dokumen Laporan Rasmi -->
+            <div id="printable-report-area" class="bg-white rounded-2xl p-6 sm:p-10 shadow-sm border border-slate-200 max-w-5xl mx-auto print-container">
+                <!-- Kepala Surat Laporan -->
+                <div class="border-b-2 border-slate-900 pb-4 mb-5">
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left">
+                        <div class="w-24 h-24 shrink-0">
+                            <svg viewBox="0 0 220 220" class="w-full h-full" xmlns="http://www.w3.org/2000/svg" aria-label="Logo Rasmi Hospital Miri">
+                                <defs>
+                                    <clipPath id="logoClipRep">
+                                        <circle cx="110" cy="110" r="103"/>
+                                    </clipPath>
+                                    <path id="topArcRep" d="M 30,96 A 82,82 0 0,1 190,96"/>
+                                    <path id="botArcRep" d="M 20,126 A 92,92 0 0,0 200,126"/>
+                                </defs>
+                                <circle cx="110" cy="110" r="104" fill="#52c4f7" stroke="#0f172a" stroke-width="3.5"/>
+                                <g clip-path="url(#logoClipRep)" stroke="#0f172a" stroke-width="1.3">
+                                    <path d="M 0,92 Q 55,106 110,92 T 220,92 L 220,100 Q 165,114 110,100 T 0,100 Z" fill="#dc2626"/>
+                                    <path d="M 0,100 Q 55,114 110,100 T 220,100 L 220,108 Q 165,122 110,108 T 0,108 Z" fill="#ffffff"/>
+                                    <path d="M 0,108 Q 55,122 110,108 T 220,108 L 220,116 Q 165,130 110,116 T 0,116 Z" fill="#dc2626"/>
+                                    <path d="M 0,116 Q 55,130 110,116 T 220,116 L 220,124 Q 165,138 110,124 T 0,124 Z" fill="#ffffff"/>
+                                    <path d="M 0,124 Q 55,138 110,124 T 220,124 L 220,132 Q 165,146 110,132 T 0,132 Z" fill="#dc2626"/>
+                                    <path d="M 0,132 Q 55,146 110,132 T 220,132 L 220,140 Q 165,154 110,140 T 0,140 Z" fill="#ffffff"/>
+                                    <path d="M 0,140 Q 55,154 110,140 T 220,140 L 220,148 Q 165,162 110,148 T 0,148 Z" fill="#dc2626"/>
+                                    <path d="M 0,148 Q 55,162 110,148 T 220,148 L 220,155 Q 165,169 110,155 T 0,155 Z" fill="#ffffff"/>
+                                    <path d="M 0,155 Q 55,169 110,155 T 220,155 L 220,162 Q 165,176 110,162 T 0,162 Z" fill="#dc2626"/>
+                                </g>
+                                <g transform="translate(110, 62)">
+                                    <path d="M -3,-24 A 7,7 0 1,0 5,-21 A 5.2,5.2 0 1,1 -3,-24 Z" fill="#b91c1c" stroke="#0f172a" stroke-width="0.9"/>
+                                    <path d="M -2,-11 C -15,-22 -30,-17 -28,-8 C -20,-10 -10,-8 -2,-5 Z" fill="#b91c1c" stroke="#0f172a" stroke-width="1.2"/>
+                                    <path d="M 2,-11 C 15,-22 30,-17 28,-8 C 20,-10 10,-8 2,-5 Z" fill="#b91c1c" stroke="#0f172a" stroke-width="1.2"/>
+                                    <rect x="-2" y="-15" width="4" height="34" rx="2" fill="#b91c1c" stroke="#0f172a" stroke-width="1.1"/>
+                                    <path d="M -6,-5 C 8,0 -8,7 6,12 M 6,-5 C -8,0 8,7 -6,12" fill="none" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+                                </g>
+                                <g fill="#facc15" stroke="#0f172a" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round">
+                                    <circle cx="62" cy="95" r="7.5"/>
+                                    <path d="M 52,72 C 49,84 51,95 55,103 L 55,147 L 62,147 L 62,126 L 64,147 L 70,147 L 70,104 L 66,102 C 62,95 60,84 57,72 Z"/>
+                                    <path d="M 59,103 Q 63,112 65,116" fill="none" stroke="#0f172a" stroke-width="1.6"/>
+                                    <circle cx="65" cy="117" r="2.2" fill="#0f172a"/>
+                                    <circle cx="88" cy="91" r="8"/>
+                                    <path d="M 78,103 C 77,114 78,132 79,151 L 86,151 L 88,128 L 90,151 L 97,151 L 97,115 L 105,119 L 106,114 L 96,103 Z"/>
+                                    <circle cx="114" cy="94" r="7.5"/>
+                                    <path d="M 106,85 L 121,82 L 122,87 L 107,89 Z" fill="#facc15"/>
+                                    <path d="M 105,104 L 103,155 L 111,155 L 114,132 L 117,155 L 124,155 L 123,104 Z"/>
+                                    <path d="M 102,118 C 107,111 118,111 122,117 C 119,124 106,125 102,118 Z" fill="#fde047"/>
+                                    <circle cx="119" cy="114" r="3.5" fill="#fde047"/>
+                                    <circle cx="138" cy="92" r="7.5"/>
+                                    <path d="M 131,82 L 145,82 L 144,87 L 132,87 Z" fill="#facc15"/>
+                                    <path d="M 129,103 L 129,151 L 136,151 L 138,129 L 140,151 L 147,151 L 147,106 C 151,96 154,84 152,72 L 147,73 C 148,83 145,93 142,102 Z"/>
+                                </g>
+                                <text font-size="18.5" font-weight="700" fill="#0f172a" letter-spacing="2.2">
+                                    <textPath href="#topArcRep" startOffset="50%" text-anchor="middle">HOSPITAL MIRI</textPath>
+                                </text>
+                                <text font-size="11.2" font-weight="700" fill="#0f172a" letter-spacing="0.45">
+                                    <textPath href="#botArcRep" startOffset="50%" text-anchor="middle">melayan anda... layanan kekeluargaan</textPath>
+                                </text>
+                            </svg>
+                        </div>
+                        <div class="text-center sm:text-left">
+                            <p class="text-xs font-bold uppercase tracking-widest text-slate-600">Kementerian Kesihatan Malaysia • Jabatan Kesihatan Negeri Sarawak</p>
+                            <h1 class="text-xl sm:text-2xl font-extrabold uppercase tracking-tight text-slate-900 mt-0.5">SENARAI SEMAK AUDIT KESELAMATAN KEBAKARAN</h1>
+                            <h2 class="text-base sm:text-lg font-bold uppercase text-red-800">HOSPITAL MIRI</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jadual Maklumat Kawalan (Sama seperti Muka 1 PDF) -->
+                <table class="w-full border-collapse border border-slate-800 text-xs sm:text-sm mb-5">
+                    <tbody>
+                        <tr>
+                            <td class="border border-slate-800 p-2.5 bg-slate-100 font-bold w-1/4">Jabatan / Unit / Wad</td>
+                            <td id="rep-jabatan" class="border border-slate-800 p-2.5 font-semibold w-1/4">-</td>
+                            <td class="border border-slate-800 p-2.5 bg-slate-100 font-bold w-1/4">Tarikh Audit</td>
+                            <td id="rep-tarikh" class="border border-slate-800 p-2.5 font-semibold w-1/4">-</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-slate-800 p-2.5 bg-slate-100 font-bold">Nama Juruaudit</td>
+                            <td id="rep-juruaudit" class="border border-slate-800 p-2.5 font-semibold">-</td>
+                            <td class="border border-slate-800 p-2.5 bg-slate-100 font-bold">Auditee</td>
+                            <td id="rep-auditee" class="border border-slate-800 p-2.5 font-semibold">-</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-slate-800 p-2.5 bg-slate-100 font-bold">Skor Pematuhan</td>
+                            <td id="rep-skor" class="border border-slate-800 p-2.5 font-bold text-emerald-700">-</td>
+                            <td class="border border-slate-800 p-2.5 bg-slate-100 font-bold">Ringkasan Penemuan</td>
+                            <td id="rep-ringkasan" class="border border-slate-800 p-2.5">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Kandungan Jadual Penuh Bahagian A, B, C -->
+                <div id="report-tables-container" class="space-y-6">
+                    <!-- Dijana secara dinamik oleh JS -->
+                </div>
+
+                <!-- Ulasan, Cadangan & Ruang Tandatangan (Sama seperti Muka 5 PDF) -->
+                <div class="mt-6 space-y-4">
+                    <div class="border border-slate-800 p-3.5 rounded-none">
+                        <p class="text-xs font-bold uppercase text-slate-800 mb-1">Ulasan Juruaudit:</p>
+                        <p id="rep-ulasan" class="text-xs sm:text-sm text-slate-900 whitespace-pre-line min-h-[42px]">-</p>
+                    </div>
+
+                    <div class="border border-slate-800 p-3.5 rounded-none">
+                        <p class="text-xs font-bold uppercase text-slate-800 mb-1">Cadangan / Usul:</p>
+                        <p id="rep-cadangan" class="text-xs sm:text-sm text-slate-900 whitespace-pre-line min-h-[42px]">-</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+                        <div class="border border-slate-800 p-4 flex flex-col justify-between min-h-[175px]">
+                            <div class="flex items-center justify-between">
+                                <p class="text-xs font-bold uppercase">Laporan disediakan oleh:</p>
+                                <span id="rep-auditor-sign-badge" class="hidden text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-blue-100 text-blue-800 border border-blue-300">Ditandatangani</span>
+                            </div>
+                            <div class="my-2 min-h-[54px] flex items-center">
+                                <img id="rep-auditor-signature-img" src="" alt="Tandatangan Digital Juruaudit" class="hidden max-h-14 object-contain">
+                            </div>
+                            <div>
+                                <div class="border-b border-dotted border-slate-800 w-3/4 mb-1.5"></div>
+                                <p id="rep-sign-penyedia-nama" class="text-xs font-bold uppercase">-</p>
+                                <p class="text-xs text-slate-700 mt-1">Cop Jawatan: <span id="rep-sign-penyedia-jawatan" class="font-medium">-</span></p>
+                            </div>
+                        </div>
+                        <div class="border border-slate-800 p-4 flex flex-col justify-between min-h-[175px] relative">
+                            <div class="flex items-center justify-between">
+                                <p class="text-xs font-bold uppercase">Disahkan oleh:</p>
+                                <span id="rep-verify-badge" class="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-300">Belum Disahkan</span>
+                            </div>
+                            <p class="text-[11px] font-mono text-slate-600 mt-0.5">No. Rujukan Audit: <strong id="rep-audit-ref-no" class="text-slate-900">-</strong></p>
+
+                            <!-- Paparan Tandatangan & Cop Rasmi jika telah disahkan -->
+                            <div id="rep-digital-seal-box" class="my-2 min-h-[54px] flex items-center justify-between gap-2">
+                                <img id="rep-signature-img" src="" alt="Tandatangan Digital" class="hidden max-h-14 object-contain">
+                                <div id="rep-digital-stamp" class="hidden border-2 border-emerald-700 text-emerald-800 px-2.5 py-1 rounded text-[10px] font-extrabold uppercase tracking-wider rotate-[-2deg] bg-emerald-50/80">
+                                    <div>DISAHKAN SECARA DIGITAL</div>
+                                    <div id="rep-verify-code" class="text-[9px] font-mono font-semibold text-emerald-900">MGH-VER-2026</div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="border-b border-dotted border-slate-800 w-3/4 mb-1.5"></div>
+                                <p id="rep-sign-pengesah-nama" class="text-xs font-bold uppercase">-</p>
+                                <p class="text-xs text-slate-700 mt-1">Cop Jawatan: <span id="rep-sign-pengesah-jawatan" class="font-medium">-</span></p>
+                                <p class="text-xs text-slate-800 mt-1">Tarikh Pengesahan: <span id="rep-sign-pengesah-tarikh" class="font-bold">Belum Disahkan</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bahagian Lampiran Gambar Pemeriksaan (Untuk Cetakan / Laporan Rasmi) -->
+                    <div id="report-photos-section" class="pt-6 mt-6 border-t-2 border-slate-900">
+                        <div class="bg-slate-800 text-white px-3 py-2 border border-slate-800 flex items-center justify-between">
+                            <h3 class="text-xs sm:text-sm font-extrabold uppercase">Lampiran: Gambar-Gambar Penemuan Pemeriksaan</h3>
+                            <span id="rep-photo-count-badge" class="text-xs font-bold">0 Gambar</span>
+                        </div>
+                        <div id="report-photos-container" class="border border-t-0 border-slate-800 p-4">
+                            <!-- Dijana secara dinamik oleh JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Aplikasi -->
+    <footer class="bg-white border-t border-slate-200 py-4 px-4 text-center text-xs text-slate-500 no-print">
+        Unit Keselamatan Kebakaran • Hospital Miri • Jabatan Kesihatan Negeri Sarawak (Borang Audit Kebakaran MGH Edisi 2026)
+    </footer>
+
+    <script>
+        // =========================================================================
+        // 0. PENYELARASAN AWAN MELALUI GOOGLE SHEETS & GOOGLE DRIVE (APPS SCRIPT)
+        // =========================================================================
+        const GAS_URL_STORAGE_KEY = 'mgh_google_sheets_webapp_url_2026';
+        const DEFAULT_GAS_URL = 'https://script.google.com/macros/s/AKfycbxAequ7dN97GpBzd6ZQ0NMyJX4v-fBMh0WHlO5fXI2vUG6s4pg849qePhq8_La95otj/exec';
+        const PHOTO_DRIVE_FOLDER_ID = '1FTsdYO9ZbgxZsbwghxO5wFlcH9f7muEj';
+        const PDF_ARCHIVE_FOLDER_ID = '1l10bvjrKU58ko4hgsim6U2EUTRyHrJcR';
+        let activeCloudDocId = null;
+
+        function getActiveGasUrl() {
+            const stored = (localStorage.getItem(GAS_URL_STORAGE_KEY) || '').trim();
+            return stored || DEFAULT_GAS_URL;
+        }
+
+        const APPS_SCRIPT_CODE = `function getOrCreateYearFolder(parentFolderId, yearStr) {
+  const parent = DriveApp.getFolderById(parentFolderId);
+  const existing = parent.getFoldersByName(yearStr);
+  if (existing.hasNext()) {
+    return existing.next();
+  }
+  return parent.createFolder(yearStr);
+}
+
+function trashPhotoIds(ids) {
+  if (!Array.isArray(ids)) return;
+  ids.forEach(function(fileId) {
+    if (!fileId) return;
+    try {
+      DriveApp.getFileById(fileId).setTrashed(true);
+    } catch (err) {}
+  });
+}
+
+function doGet(e) {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = ss.getSheetByName("RekodAudit") || ss.insertSheet("RekodAudit");
+  const rows = sheet.getDataRange().getValues();
+  const records = [];
+  for (let i = 1; i < rows.length; i++) {
+    try {
+      if (rows[i][7]) records.push(JSON.parse(rows[i][7]));
+    } catch (err) {}
+  }
+  return ContentService.createTextOutput(JSON.stringify({ records: records.reverse() }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function doPost(e) {
+  const payload = JSON.parse(e.postData.contents);
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = ss.getSheetByName("RekodAudit") || ss.insertSheet("RekodAudit");
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(["ID", "Jabatan/Unit/Wad", "Tarikh", "Juruaudit", "Skor", "Status", "Dikemaskini", "JSON_Data"]);
+  }
+  const rows = sheet.getDataRange().getValues();
+
+  if (payload.action === "deletePhoto") {
+    trashPhotoIds([payload.driveId]);
+    return ContentService.createTextOutput(JSON.stringify({ status: "photo_deleted" }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
+  if (payload.action === "delete") {
+    for (let i = rows.length - 1; i >= 1; i--) {
+      if (rows[i][0] === payload.id) {
+        try {
+          const oldRec = JSON.parse(rows[i][7] || "{}");
+          if (Array.isArray(oldRec.photos)) {
+            trashPhotoIds(oldRec.photos.map(function(p) { return p.driveId; }));
+          }
+        } catch (err) {}
+        sheet.deleteRow(i + 1);
+      }
+    }
+    return ContentService.createTextOutput(JSON.stringify({ status: "deleted" }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
+  if (payload.action === "savePdf") {
+    const yearStr = String(payload.year || new Date().getFullYear());
+    const yearFolder = getOrCreateYearFolder("${PDF_ARCHIVE_FOLDER_ID}", yearStr);
+    const fileName = (payload.fileName || ("Laporan_Audit_Kebakaran_" + yearStr)) + ".pdf";
+    const htmlBlob = Utilities.newBlob(payload.htmlContent || "", "text/html", fileName);
+    const pdfBlob = htmlBlob.getAs("application/pdf").setName(fileName);
+    const pdfFile = yearFolder.createFile(pdfBlob);
+    pdfFile.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+    return ContentService.createTextOutput(JSON.stringify({
+      status: "pdf_saved",
+      fileId: pdfFile.getId(),
+      fileUrl: pdfFile.getUrl(),
+      folderUrl: yearFolder.getUrl(),
+      year: yearStr
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
+
+  if (payload.action === "upsert" && payload.record) {
+    const rec = payload.record;
+    const photoFolder = DriveApp.getFolderById("${PHOTO_DRIVE_FOLDER_ID}");
+    if (Array.isArray(rec.photos)) {
+      rec.photos = rec.photos.map(function(p, idx) {
+        if (!p.driveId && p.dataUrl && p.dataUrl.indexOf("data:image") === 0) {
+          try {
+            const base64 = p.dataUrl.split(",")[1];
+            const blob = Utilities.newBlob(Utilities.base64Decode(base64), "image/jpeg", rec.id + "_Foto_" + (idx + 1) + ".jpg");
+            const file = photoFolder.createFile(blob);
+            file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+            p.driveId = file.getId();
+            p.driveUrl = "https://drive.google.com/thumbnail?id=" + file.getId() + "&sz=w1000";
+            p.dataUrl = "";
+          } catch (err) {}
+        } else if (p.driveId) {
+          p.dataUrl = "";
+        }
+        return p;
+      });
+    }
+
+    const rowData = [
+      rec.id,
+      rec.jabatan,
+      rec.tarikh,
+      rec.juruaudit,
+      rec.skor + "%",
+      rec.verificationStatus,
+      new Date().toISOString(),
+      JSON.stringify(rec)
+    ];
+
+    let foundRow = -1;
+    for (let i = 1; i < rows.length; i++) {
+      if (rows[i][0] === rec.id) {
+        foundRow = i + 1;
+        break;
+      }
+    }
+    if (foundRow > 0) {
+      sheet.getRange(foundRow, 1, 1, rowData.length).setValues([rowData]);
+    } else {
+      sheet.appendRow(rowData);
+    }
+    return ContentService.createTextOutput(JSON.stringify({ status: "saved", id: rec.id, photos: rec.photos }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+  return ContentService.createTextOutput(JSON.stringify({ status: "ignored" }))
+    .setMimeType(ContentService.MimeType.JSON);
+}`;
+
+        function updateCloudBadge(connected, text) {
+            const badge = document.getElementById('cloud-sync-badge');
+            if (!badge) return;
+            if (connected) {
+                badge.className = "inline-flex items-center gap-1.5 text-[11px] font-semibold bg-emerald-950/80 text-emerald-300 border border-emerald-400/40 px-2.5 py-0.5 rounded-full hover:brightness-110 transition-all cursor-pointer";
+                badge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span><span>${text}</span>`;
+            } else {
+                badge.className = "inline-flex items-center gap-1.5 text-[11px] font-semibold bg-amber-950/80 text-amber-300 border border-amber-400/40 px-2.5 py-0.5 rounded-full hover:brightness-110 transition-all cursor-pointer";
+                badge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span><span>${text}</span>`;
+            }
+        }
+
+        async function fetchRecordsFromGoogleSheets(silent = false) {
+            const gasUrl = getActiveGasUrl();
+            if (!gasUrl) {
+                updateCloudBadge(false, "Tetapkan Google Sheets");
+                return;
+            }
+            updateCloudBadge(true, "Menyegerak Sheets...");
+            try {
+                const separator = gasUrl.includes('?') ? '&' : '?';
+                const res = await fetch(`${gasUrl}${separator}t=${Date.now()}`, { cache: 'no-store' });
+                const data = await res.json();
+                if (data && Array.isArray(data.records)) {
+                    const localMap = new Map((window.historicalAudits || []).map(r => [r.id, r]));
+                    const cloudIds = new Set(data.records.map(r => r.id));
+                    const merged = data.records.map(r => ({
+                        ...r,
+                        isCurrent: r.id === activeCloudDocId
+                    }));
+                    // Kekalkan rekod tempatan yang baru disimpan jika belum selesai dimuat naik
+                    localMap.forEach((val, key) => {
+                        if (!cloudIds.has(key) && val.pendingCloudSync) {
+                            merged.unshift(val);
+                        }
+                    });
+                    window.historicalAudits = merged;
+                    if (window.saveLocalBackup) window.saveLocalBackup();
+                    if (typeof updateDashboard === 'function') updateDashboard();
+                    updateCloudBadge(true, "Google Sheets Aktif");
+                    if (!silent) showToast(`${data.records.length} rekod berjaya disegerakkan daripada Google Sheets!`);
+                    await checkDeepLinkVerification();
+                }
+            } catch (err) {
+                console.error("Ralat membaca Google Sheets:", err);
+                updateCloudBadge(false, "Ralat Sambungan Sheets");
+                if (!silent) showToast("Gagal menyambung ke Google Sheets. Semak pautan Web App URL.", "error");
+            }
+        }
+
+        window.syncRecordToCloud = async function(recordObj) {
+            const gasUrl = getActiveGasUrl();
+            if (!gasUrl || !recordObj || !recordObj.id) return;
+            updateCloudBadge(true, "Menghantar ke Sheets...");
+            try {
+                const payload = { ...recordObj, updatedAt: Date.now() };
+                delete payload.isCurrent;
+                delete payload.pendingCloudSync;
+
+                // Hadkan saiz JSON agar sentiasa muat di bawah had 50,000 aksara sel Google Sheets
+                let jsonStr = JSON.stringify({ action: "upsert", record: payload });
+                if (jsonStr.length > 47000 && Array.isArray(payload.photos)) {
+                    payload.photos = payload.photos.map(p => (p.driveId ? { ...p, dataUrl: '' } : p));
+                    jsonStr = JSON.stringify({ action: "upsert", record: payload });
+                }
+                if (jsonStr.length > 48500 && Array.isArray(payload.photos)) {
+                    payload.photos = payload.photos.map(p => ({ ...p, dataUrl: '' }));
+                    jsonStr = JSON.stringify({ action: "upsert", record: payload });
+                }
+
+                const res = await fetch(gasUrl, {
+                    method: "POST",
+                    headers: { "Content-Type": "text/plain;charset=utf-8" },
+                    body: jsonStr
+                });
+                const result = await res.json();
+                recordObj.pendingCloudSync = false;
+                if (result && Array.isArray(result.photos)) {
+                    auditPhotos = result.photos.map((p, i) => ({
+                        ...p,
+                        dataUrl: p.dataUrl || (auditPhotos[i] ? auditPhotos[i].dataUrl : '')
+                    }));
+                    recordObj.photos = auditPhotos.map(p => ({ ...p }));
+                }
+                window.saveLocalBackup();
+                updateCloudBadge(true, "Google Sheets Aktif");
+                showToast("Rekod berjaya disegerakkan ke awan (Google Sheets & Drive)!");
+                setTimeout(() => fetchRecordsFromGoogleSheets(true), 1200);
+            } catch (err) {
+                console.error("Ralat menyegerakkan ke Google Sheets:", err);
+                updateCloudBadge(false, "Gagal Hantar ke Sheets");
+                showToast("Rekod disimpan setempat, tetapi gagal dihantar ke Google Sheets.", "error");
+            }
+        };
+
+        window.deletePhotoFromCloud = async function(driveId) {
+            const gasUrl = getActiveGasUrl();
+            if (!gasUrl || !driveId) return;
+            try {
+                await fetch(gasUrl, {
+                    method: "POST",
+                    headers: { "Content-Type": "text/plain;charset=utf-8" },
+                    body: JSON.stringify({ action: "deletePhoto", driveId: driveId })
+                });
+            } catch (err) {
+                console.error("Gagal memadam gambar di Google Drive:", err);
+            }
+        };
+
+        window.deleteRecordFromCloud = async function(docId) {
+            const gasUrl = getActiveGasUrl();
+            if (!gasUrl || !docId) return;
+            try {
+                await fetch(gasUrl, {
+                    method: "POST",
+                    headers: { "Content-Type": "text/plain;charset=utf-8" },
+                    body: JSON.stringify({ action: "delete", id: docId })
+                });
+                if (activeCloudDocId === docId) activeCloudDocId = null;
+            } catch (err) {
+                console.error("Gagal memadam rekod di Google Sheets:", err);
+            }
+        };
+
+        window.setActiveCloudDocId = function(docId) {
+            activeCloudDocId = docId;
+        };
+    </script>
+
+    <script>
+        // =========================================================================
+        // 1. SKEMA DATA RASMI BORANG AUDIT KEBAKARAN HOSPITAL MIRI (MGH 2026)
+        // =========================================================================
+        const auditSchema = [
+            {
+                sectionCode: "A",
+                sectionTitle: "A. PENGURUSAN KESELAMATAN KEBAKARAN",
+                items: [
+                    {
+                        no: "1",
+                        title: "Polisi Keselamatan Kebakaran",
+                        subItems: [
+                            { id: "A1a", label: "a) Di pamerkan", status: "", kenyataan: "", cadangan: "" },
+                            { id: "A1b", label: "b) Di sahkan oleh pengarah hospital", status: "", kenyataan: "", cadangan: "" }
+                        ]
+                    },
+                    {
+                        no: "2",
+                        title: "Pelan Lantai",
+                        subItems: [
+                            { id: "A2a", label: "a) Di pamerkan & mudah dilihat", status: "", kenyataan: "", cadangan: "" },
+                            { id: "A2b", label: "b) Menunjukkan tangga keselamatan, laluan keselamatan, jalan keluar dan kedudukan alat-alat penentang kebakaran", status: "", kenyataan: "", cadangan: "" },
+                            { id: "A2c", label: "c) Tercatat nombor telefon Bomba 085-422 973 (JBPM Lopeng) & Nombor direct line ke khidmat pelanggan: 0/8086", status: "", kenyataan: "", cadangan: "" }
+                        ]
+                    },
+                    {
+                        no: "3",
+                        title: "Lampu Kecemasan",
+                        quantityLabel: "Bilangan",
+                        quantityValue: "",
+                        subItems: [
+                            { id: "A3a", label: "a) Berfungsi", status: "", kenyataan: "", cadangan: "" },
+                            { id: "A3b", label: "b) Menggunakan dua kuasa karan", status: "", kenyataan: "", cadangan: "" }
+                        ]
+                    },
+                    {
+                        no: "4",
+                        title: "Tanda Arah Laluan Kecemasan",
+                        subItems: [
+                            { id: "A4a", label: "a) Dapat di lihat dengan mudah", status: "", kenyataan: "", cadangan: "" },
+                            { id: "A4b", label: "b) Ke arah perjalanan menuju ke pintu keluar yang terdekat", status: "", kenyataan: "", cadangan: "" },
+                            { id: "A4c", label: "c) Mengikut spesifikasi (Berukuran A4 putih, anak panah hijau, tulisan 'LALUAN KECEMASAN' hitam bold di bawah anak panah, ketinggian 3 kaki dari lantai)", status: "", kenyataan: "", cadangan: "" }
+                        ]
+                    },
+                    {
+                        no: "5",
+                        title: "Tanda \"KELUAR\"",
+                        subItems: [
+                            { id: "A5a", label: "a) Berlampu", status: "", kenyataan: "", cadangan: "" },
+                            { id: "A5b", label: "b) Pendawaian elektrik di pasang di dalam conduit logam", status: "", kenyataan: "", cadangan: "" },
+                            { id: "A5c", label: "c) Menggunakan dua kuasa karan", status: "", kenyataan: "", cadangan: "" }
+                        ]
+                    },
+                    {
+                        no: "6",
+                        title: "Pintu Rintangan Api (Fire Door)",
+                        subItems: [
+                            { id: "A6a", label: "a) Sentiasa di tutup", status: "", kenyataan: "", cadangan: "" },
+                            { id: "A6b", label: "b) Tertutup sendiri (di pasang door closer)", status: "", kenyataan: "", cadangan: "" },
+                            { id: "A6c", label: "c) Tertutup rapat", status: "", kenyataan: "", cadangan: "" },
+                            { id: "A6d", label: "d) Jika pintu berkunci, anak kunci perlu berada di sebelah pintu", status: "", kenyataan: "", cadangan: "" }
+                        ]
+                    },
+                    {
+                        no: "7",
+                        title: "Laluan / Tangga Kecemasan",
+                        subItems: [
+                            { id: "A7a", label: "a) Bebas dari halangan", status: "", kenyataan: "", cadangan: "" },
+                            { id: "A7b", label: "b) Pintu rintangan api", status: "", kenyataan: "", cadangan: "" },
+                            { id: "A7c", label: "c) Jika pintu berkunci, anak kunci perlu berada di sebelah pintu", allowTB: true, status: "", kenyataan: "", cadangan: "" }
+                        ]
+                    },
+                    {
+                        no: "8",
+                        title: "Gas Perubatan Setempat",
+                        allowTB: true,
+                        subItems: [
+                            { id: "A8a", label: "a) Rekod PPM Saluran", status: "", kenyataan: "", cadangan: "" }
+                        ]
+                    }
+                ]
+            },
+            {
+                sectionCode: "B",
+                sectionTitle: "B. FASILITI MENENTANG KEBAKARAN",
+                items: [
+                    {
+                        no: "1",
+                        title: "Pemadam Api (Fire Extinguisher)",
+                        allowTB: true,
+                        subItems: [
+                            { id: "B1ai", label: "a) i) Jenis: Dry Powder", quantityLabel: "Bilangan", quantityValue: "", status: "", kenyataan: "", cadangan: "" },
+                            { id: "B1aii", label: "a) ii) Jenis: Carbon Dioxide (CO2)", quantityLabel: "Bilangan", quantityValue: "", status: "", kenyataan: "", cadangan: "" },
+                            { id: "B1bc", label: "b) Mudah di lihat & c) Ketinggian : 1 meter dari lantai ke cangkuk", status: "", kenyataan: "", cadangan: "" },
+                            { id: "B1de", label: "d) Mempunyai sijil yang sah & e) Tarikh akhir penyelenggaraan", status: "", kenyataan: "", cadangan: "" },
+                            { id: "B1f", label: "f) Pressure gauge menunjukkan kandungan penuh (dalam ruang hijau)", status: "", kenyataan: "", cadangan: "" },
+                            { id: "B1g", label: "g) Visual defect (Tiada kerosakan fizikal / karat / hos retak)", status: "", kenyataan: "", cadangan: "" },
+                            { id: "B1h", label: "h) Kefahaman kakitangan: menggunakan jenis alat pemadam api yang betul & teknik pemadaman yang betul (PASS)", status: "", kenyataan: "", cadangan: "" }
+                        ]
+                    },
+                    {
+                        no: "2",
+                        title: "Pengesan Asap (Smoke Detector)",
+                        allowTB: true,
+                        quantityLabel: "Bilangan",
+                        quantityValue: "",
+                        subItems: [
+                            { id: "B2a", label: "a) Berfungsi / Light blink", status: "", kenyataan: "", cadangan: "" }
+                        ]
+                    },
+                    {
+                        no: "3",
+                        title: "Pengesan Haba (Heat Detector)",
+                        allowTB: true,
+                        quantityLabel: "Bilangan",
+                        quantityValue: "",
+                        subItems: [
+                            { id: "B3a", label: "a) Berfungsi", status: "", kenyataan: "", cadangan: "" }
+                        ]
+                    },
+                    {
+                        no: "4",
+                        title: "Penggera Kebakaran (Fire Alarm)",
+                        quantityLabel: "Bilangan",
+                        quantityValue: "",
+                        subItems: [
+                            { id: "B4a", label: "a) Jenis pecah kaca (Break Glass)", status: "", kenyataan: "", cadangan: "" },
+                            { id: "B4b", label: "b) Bunyi buzer [Berbunyi apabila berlaku kerosakan sistem (fault)].", reverseScore: true, note: "Perhatian: Markah pematuhan akan ditolak sekiranya jawapan adalah \"Ada / Ya\" (menunjukkan sistem mengalami fault).", status: "", kenyataan: "", cadangan: "" },
+                            { id: "B4c", label: "c) Bunyi loceng", status: "", kenyataan: "", cadangan: "" },
+                            { id: "B4d", label: "d) Nyalaan lampu", status: "", kenyataan: "", cadangan: "" },
+                            { id: "B4e", label: "e) Tarikh akhir penyelenggaraan", note: "Penyelenggaraan sistem penggera kebakaran perlu dilakukan secara berkala (biasanya setiap 3 atau 6 bulan sekali) mengikut piawaian Jabatan Bomba dan Penyelamat Malaysia (JBPM) serta syarat pembaharuan Perakuan Bomba (Fire Certificate - FC).", status: "", kenyataan: "", cadangan: "" }
+                        ]
+                    },
+                    {
+                        no: "5",
+                        title: "Sistem Gelung Hos (Hose Reel)",
+                        quantityLabel: "Bilangan",
+                        quantityValue: "",
+                        subItems: [
+                            { id: "B5a", label: "a) Bebas dari halangan", status: "", kenyataan: "", cadangan: "" },
+                            { id: "B5b", label: "b) Tarikh akhir penyelenggaraan", status: "", kenyataan: "", cadangan: "" }
+                        ]
+                    },
+                    {
+                        no: "6",
+                        title: "Penyembur Air Automatik (Sprinkler)",
+                        allowTB: true,
+                        subItems: [
+                            { id: "B6a", label: "a) Kepala sprinkler bersih, tidak dicat & bebas halangan (jarak 18 inci)", status: "", kenyataan: "", cadangan: "" }
+                        ]
+                    },
+                    {
+                        no: "7",
+                        title: "Pili Bomba (Fire Hydrant)",
+                        subItems: [
+                            { id: "B7a", label: "a) Bebas daripada halangan", status: "", kenyataan: "", cadangan: "" }
+                        ]
+                    }
+                ]
+            },
+            {
+                sectionCode: "C",
+                sectionTitle: "C. LATIHAN KEBAKARAN",
+                items: [
+                    {
+                        no: "1",
+                        title: "Ceramah Kebakaran",
+                        subItems: [
+                            { id: "C1a", label: "a) Bilangan ceramah kebakaran yang di jalankan di peringkat Jabatan / Unit / wad", quantityLabel: "Bil. Ceramah", quantityValue: "", status: "", kenyataan: "", cadangan: "" },
+                            { id: "C1b", label: "b) Bilangan anggota yang telah menghadiri ceramah kebakaran", quantityLabel: "Bil. Anggota", quantityValue: "", status: "", kenyataan: "", cadangan: "" }
+                        ]
+                    },
+                    {
+                        no: "2",
+                        title: "Action Card",
+                        subItems: [
+                            { id: "C2a", label: "a) Petugas tahu di mana action card di tempat", status: "", kenyataan: "", cadangan: "" }
+                        ]
+                    },
+                    {
+                        no: "3",
+                        title: "Latihan Kebakaran (Fire Drill)",
+                        subItems: [
+                            { id: "C3a", label: "a) Kekerapan latihan kebakaran yang di jalankan di peringkat Jabatan / Unit / Wad", quantityLabel: "Kekerapan", quantityValue: "", status: "", kenyataan: "", cadangan: "" },
+                            { id: "C3b", label: "b) Kakitangan tahu tindakan apabila berlakunya kebakaran (RACE)", status: "", kenyataan: "", cadangan: "" }
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        // Rekod Sejarah Audit Hospital Miri (Disimpan setempat & diselaraskan melalui window.historicalAudits)
+        const LOCAL_AUDITS_STORAGE_KEY = 'mgh_fire_audits_local_2026';
+        function loadLocalBackup() {
+            try {
+                const raw = localStorage.getItem(LOCAL_AUDITS_STORAGE_KEY);
+                return raw ? JSON.parse(raw) : [];
+            } catch (e) {
+                return [];
+            }
+        }
+        window.saveLocalBackup = function() {
+            try {
+                localStorage.setItem(LOCAL_AUDITS_STORAGE_KEY, JSON.stringify(window.historicalAudits || []));
+            } catch (e) {
+                console.warn("Storan tempatan penuh:", e);
+            }
+        };
+
+        window.historicalAudits = window.historicalAudits && window.historicalAudits.length > 0
+            ? window.historicalAudits
+            : loadLocalBackup();
+        let pendingDeleteTarget = null; // { type: 'current' } atau { type: 'record', id: string }
+        let auditPhotos = []; // [{ id, dataUrl, caption }]
+
+        // Keadaan Pengesahan Digital Laporan Semasa
+        let verificationState = {
+            status: "PENDING", // PENDING | SUBMITTED | VERIFIED
+            verifiedDate: "",
+            signatureDataUrl: "",
+            auditorSignatureDataUrl: "",
+            verificationCode: "",
+            securityToken: "",
+            auditRefNo: ""
+        };
+
+        function generateAuditRefNo() {
+            const year = new Date().getFullYear();
+            const rand = Math.floor(1000 + Math.random() * 9000);
+            return `MGH-AUD-${year}-${rand}`;
+        }
+
+        function ensureAuditRefNo() {
+            if (!verificationState.auditRefNo) {
+                verificationState.auditRefNo = generateAuditRefNo();
+            }
+            return verificationState.auditRefNo;
+        }
+
+        function generateSecurityToken() {
+            const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+            let token = '';
+            const arr = new Uint8Array(12);
+            if (window.crypto && window.crypto.getRandomValues) {
+                window.crypto.getRandomValues(arr);
+                for (let i = 0; i < arr.length; i++) token += chars[arr[i] % chars.length];
+            } else {
+                for (let i = 0; i < 12; i++) token += chars[Math.floor(Math.random() * chars.length)];
+            }
+            return token;
+        }
+
+        // =========================================================================
+        // 2. UTILITI & NAVIGASI TAB
+        // =========================================================================
+        function escapeHtml(str) {
+            if (str === null || str === undefined) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+            const toast = document.createElement('div');
+            const isError = type === 'error';
+            toast.className = `flex items-center gap-2.5 px-4 py-3 rounded-xl shadow-lg border text-xs sm:text-sm font-semibold transition-all duration-300 ${
+                isError
+                    ? 'bg-rose-900 text-white border-rose-700'
+                    : 'bg-slate-900 text-white border-slate-700'
+            }`;
+            toast.innerHTML = `<span class="w-2 h-2 rounded-full shrink-0 ${isError ? 'bg-rose-400' : 'bg-emerald-400'}"></span><span>${escapeHtml(message)}</span>`;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 3800);
+        }
+
+        function switchTab(tabName) {
+            ['dashboard', 'form', 'report'].forEach(name => {
+                const view = document.getElementById(`view-${name}`);
+                const btn = document.getElementById(`tab-${name}`);
+                if (view) view.classList.toggle('hidden', name !== tabName);
+                if (btn) {
+                    if (name === tabName) {
+                        btn.className = 'tab-btn flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all bg-white text-red-800 shadow-sm';
+                    } else {
+                        btn.className = 'tab-btn flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all text-red-100 hover:text-white';
+                    }
+                }
+            });
+            if (tabName === 'dashboard') updateDashboard();
+            if (tabName === 'form') {
+                renderAuditForm();
+                renderFormPhotos();
+                setTimeout(() => {
+                    const auditorCanvas = document.getElementById('auditor-signature-canvas');
+                    if (auditorCanvas && auditorCanvas._resizeSigCanvas) {
+                        auditorCanvas._resizeSigCanvas(verificationState.auditorSignatureDataUrl);
+                    }
+                }, 40);
+            }
+            if (tabName === 'report') renderOfficialReport();
+            if (window.lucide) lucide.createIcons();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function buildVerificationDirectLink() {
+            const currentRec = (window.historicalAudits || []).find(r => r.isCurrent) || (window.historicalAudits || [])[0];
+            const recordId = activeCloudDocId || (currentRec ? currentRec.id : "");
+            const token = verificationState.securityToken || (currentRec ? currentRec.securityToken : "") || "";
+            const gasUrl = getActiveGasUrl();
+            const baseUrl = window.location.href.split('?')[0].split('#')[0];
+
+            const params = new URLSearchParams();
+            if (recordId) params.set('verify', recordId);
+            if (token) params.set('token', token);
+            if (gasUrl) params.set('gas', gasUrl);
+
+            const queryString = params.toString();
+            return queryString ? `${baseUrl}?${queryString}` : baseUrl;
+        }
+
+        let deepLinkHandled = false;
+        async function checkDeepLinkVerification() {
+            if (deepLinkHandled) return;
+            const params = new URLSearchParams(window.location.search);
+            const verifyId = params.get('verify');
+            const urlToken = (params.get('token') || '').trim();
+            const gasParam = params.get('gas');
+
+            if (gasParam && gasParam.startsWith('https://script.google.com/')) {
+                const existingGas = (localStorage.getItem(GAS_URL_STORAGE_KEY) || '').trim();
+                if (existingGas !== gasParam) {
+                    localStorage.setItem(GAS_URL_STORAGE_KEY, gasParam);
+                    await fetchRecordsFromGoogleSheets(true);
+                    return;
+                }
+            }
+
+            if (!verifyId) return;
+            const targetRec = (window.historicalAudits || []).find(r => r.id === verifyId);
+            if (targetRec) {
+                deepLinkHandled = true;
+                loadRecordIntoView(verifyId);
+
+                if (targetRec.verificationStatus === 'VERIFIED') {
+                    showToast(`Laporan "${targetRec.jabatan}" telah dikunci & disahkan pada ${targetRec.verifiedDate}.`);
+                    return;
+                }
+
+                if (targetRec.securityToken && urlToken !== targetRec.securityToken) {
+                    showToast("Amaran Keselamatan: Token pengesahan pautan tidak sah atau telah luput.", "error");
+                    return;
+                }
+
+                setTimeout(() => {
+                    openSignatureModal();
+                }, 300);
+            }
+        }
+
+        // =========================================================================
+        // 3. PENGIRAAN SKOR & METRIK PEMATUHAN
+        // =========================================================================
+        function calculateMetrics() {
+            let yaCount = 0;
+            let tiadaCount = 0;
+            let tbCount = 0;
+            let totalSubItems = 0;
+            const nonCompliances = [];
+            const sectionStats = [];
+
+            let extinguisherUnits = 0;
+            let detectorUnits = 0;
+            let emgLightUnits = 0;
+            let trainedStaffCount = 0;
+
+            auditSchema.forEach(sec => {
+                let secYa = 0;
+                let secTiada = 0;
+                let secTotal = 0;
+
+                sec.items.forEach(item => {
+                    if (item.no === "3" && sec.sectionCode === "A") {
+                        emgLightUnits += parseInt(item.quantityValue, 10) || 0;
+                    }
+                    if ((item.no === "2" || item.no === "3") && sec.sectionCode === "B") {
+                        detectorUnits += parseInt(item.quantityValue, 10) || 0;
+                    }
+
+                    item.subItems.forEach(sub => {
+                        const subAllowTB = Boolean(item.allowTB || sub.allowTB);
+                        if (sub.id === "B1ai" || sub.id === "B1aii") {
+                            extinguisherUnits += parseInt(sub.quantityValue, 10) || 0;
+                        }
+                        if (sub.id === "C1b") {
+                            trainedStaffCount += parseInt(sub.quantityValue, 10) || 0;
+                        }
+
+                        if (sub.status === "TB" && subAllowTB) {
+                            tbCount++;
+                            return;
+                        }
+
+                        totalSubItems++;
+                        secTotal++;
+                        const isCompliant = sub.reverseScore ? (sub.status === "TIADA") : (sub.status === "YA");
+                        const isNonCompliant = sub.reverseScore ? (sub.status === "YA") : (sub.status === "TIADA");
+
+                        if (isCompliant) {
+                            yaCount++;
+                            secYa++;
+                        } else if (isNonCompliant) {
+                            tiadaCount++;
+                            secTiada++;
+                            nonCompliances.push({
+                                section: sec.sectionCode,
+                                itemNo: item.no,
+                                itemTitle: item.title,
+                                label: sub.label,
+                                statusText: sub.reverseScore ? "ADA / YA (FAULT)" : "TIADA",
+                                kenyataan: sub.kenyataan,
+                                cadangan: sub.cadangan
+                            });
+                        }
+                    });
+                });
+
+                const secEvaluated = secYa + secTiada;
+                const secPct = secEvaluated > 0 ? Math.round((secYa / secEvaluated) * 100) : 0;
+                sectionStats.push({
+                    code: sec.sectionCode,
+                    title: sec.sectionTitle,
+                    ya: secYa,
+                    tiada: secTiada,
+                    total: secTotal,
+                    evaluated: secEvaluated,
+                    pct: secPct
+                });
+            });
+
+            const evaluatedCount = yaCount + tiadaCount;
+            const scorePct = evaluatedCount > 0 ? Math.round((yaCount / evaluatedCount) * 100) : 0;
+
+            return {
+                yaCount,
+                tiadaCount,
+                tbCount,
+                totalSubItems,
+                evaluatedCount,
+                scorePct,
+                nonCompliances,
+                sectionStats,
+                extinguisherUnits,
+                detectorUnits,
+                emgLightUnits,
+                trainedStaffCount,
+                totalEquipment: extinguisherUnits + detectorUnits + emgLightUnits
+            };
+        }
+
+        // =========================================================================
+        // 4. BORANG AUDIT INTERAKTIF & LAMPIRAN GAMBAR
+        // =========================================================================
+        function renderAuditForm() {
+            const container = document.getElementById('audit-form-sections');
+            if (!container) return;
+
+            const editNotice = document.getElementById('form-edit-notice');
+            if (editNotice) {
+                editNotice.classList.toggle('hidden', verificationState.status !== 'SUBMITTED');
+            }
+
+            const m = calculateMetrics();
+            const progressText = document.getElementById('form-progress-text');
+            if (progressText) {
+                progressText.textContent = `${m.evaluatedCount} daripada ${m.totalSubItems} kriteria telah dinilai (Skor: ${m.scorePct}%${m.tbCount > 0 ? `, ${m.tbCount} TB` : ''})`;
+            }
+
+            container.innerHTML = auditSchema.map((sec, sIdx) => `
+                <div class="bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-slate-200/80 space-y-4">
+                    <div class="flex items-center justify-between border-b-2 border-red-700 pb-2.5">
+                        <h3 class="text-base sm:text-lg font-extrabold text-red-800">${escapeHtml(sec.sectionTitle)}</h3>
+                        <span class="text-xs font-semibold text-slate-500">${sec.items.length} Perkara Utama</span>
+                    </div>
+                    <div class="space-y-4">
+                        ${sec.items.map((item, iIdx) => `
+                            <div class="border border-slate-200 rounded-xl overflow-hidden">
+                                <div class="bg-slate-50 px-4 py-3 border-b border-slate-200 flex flex-wrap items-center justify-between gap-2">
+                                    <div class="flex items-center gap-2.5">
+                                        <span class="w-6 h-6 rounded-lg bg-red-700 text-white text-xs font-bold flex items-center justify-center shrink-0">${escapeHtml(item.no)}</span>
+                                        <h4 class="text-sm font-bold text-slate-900">${escapeHtml(item.title)}</h4>
+                                    </div>
+                                    ${item.quantityLabel ? `
+                                        <div class="flex items-center gap-2">
+                                            <label class="text-xs font-semibold text-slate-600">${escapeHtml(item.quantityLabel)}:</label>
+                                            <input type="number" min="0" value="${escapeHtml(item.quantityValue)}" oninput="updateItemQty(${sIdx}, ${iIdx}, this.value)" placeholder="0" class="w-20 rounded-lg border border-slate-300 bg-white px-2.5 py-1 text-xs font-bold text-slate-900 focus:ring-2 focus:ring-red-600 outline-none">
+                                        </div>
+                                    ` : ''}
+                                </div>
+                                <div class="divide-y divide-slate-100">
+                                    ${item.subItems.map((sub, subIdx) => `
+                                        <div class="p-4 grid grid-cols-1 lg:grid-cols-12 gap-3 items-start">
+                                            <div class="lg:col-span-4 space-y-1.5">
+                                                <p class="text-xs sm:text-sm font-medium text-slate-800 leading-snug">${escapeHtml(sub.label)}</p>
+                                                ${sub.note ? `<p class="text-[11px] text-slate-500 leading-relaxed">${escapeHtml(sub.note)}</p>` : ''}
+                                                ${sub.quantityLabel ? `
+                                                    <div class="inline-flex items-center gap-2 bg-slate-100 px-2.5 py-1 rounded-lg">
+                                                        <span class="text-[11px] font-semibold text-slate-600">${escapeHtml(sub.quantityLabel)}:</span>
+                                                        <input type="number" min="0" value="${escapeHtml(sub.quantityValue)}" oninput="updateSubQty(${sIdx}, ${iIdx}, ${subIdx}, this.value)" placeholder="0" class="w-16 rounded border border-slate-300 bg-white px-2 py-0.5 text-xs font-bold text-slate-900">
+                                                    </div>
+                                                ` : ''}
+                                            </div>
+                                            <div class="lg:col-span-3 flex flex-wrap items-center gap-1.5">
+                                                <button type="button" onclick="setSubStatus(${sIdx}, ${iIdx}, ${subIdx}, 'YA')" class="px-3 py-1.5 rounded-lg text-xs font-bold border transition-all ${
+                                                    sub.status === 'YA'
+                                                        ? (sub.reverseScore ? 'bg-rose-600 text-white border-rose-700 shadow-xs' : 'bg-emerald-600 text-white border-emerald-700 shadow-xs')
+                                                        : 'bg-white text-slate-600 border-slate-300 hover:bg-emerald-50'
+                                                }">Ada / Ya</button>
+                                                <button type="button" onclick="setSubStatus(${sIdx}, ${iIdx}, ${subIdx}, 'TIADA')" class="px-3 py-1.5 rounded-lg text-xs font-bold border transition-all ${
+                                                    sub.status === 'TIADA'
+                                                        ? (sub.reverseScore ? 'bg-emerald-600 text-white border-emerald-700 shadow-xs' : 'bg-rose-600 text-white border-rose-700 shadow-xs')
+                                                        : 'bg-white text-slate-600 border-slate-300 hover:bg-rose-50'
+                                                }">Tiada</button>
+                                                ${(item.allowTB || sub.allowTB) ? `
+                                                    <button type="button" onclick="setSubStatus(${sIdx}, ${iIdx}, ${subIdx}, 'TB')" class="px-2.5 py-1.5 rounded-lg text-xs font-bold border transition-all ${
+                                                        sub.status === 'TB'
+                                                            ? 'bg-slate-700 text-white border-slate-800 shadow-xs'
+                                                            : 'bg-white text-slate-500 border-slate-300 hover:bg-slate-100'
+                                                    }">TB</button>
+                                                ` : ''}
+                                            </div>
+                                            <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                                <input type="text" value="${escapeHtml(sub.kenyataan)}" oninput="updateSubText(${sIdx}, ${iIdx}, ${subIdx}, 'kenyataan', this.value)" placeholder="Catatan penemuan..." class="w-full rounded-lg border border-slate-300 px-3 py-1.5 text-xs focus:ring-2 focus:ring-red-600 outline-none">
+                                                <input type="text" value="${escapeHtml(sub.cadangan)}" oninput="updateSubText(${sIdx}, ${iIdx}, ${subIdx}, 'cadangan', this.value)" placeholder="Cadangan penambahbaikan..." class="w-full rounded-lg border border-slate-300 px-3 py-1.5 text-xs focus:ring-2 focus:ring-red-600 outline-none">
+                                            </div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function setSubStatus(sIdx, iIdx, subIdx, status) {
+            const sub = auditSchema[sIdx].items[iIdx].subItems[subIdx];
+            sub.status = sub.status === status ? '' : status;
+            renderAuditForm();
+            updateDashboard();
+        }
+
+        function updateItemQty(sIdx, iIdx, val) {
+            auditSchema[sIdx].items[iIdx].quantityValue = val;
+            updateDashboard();
+        }
+
+        function updateSubQty(sIdx, iIdx, subIdx, val) {
+            auditSchema[sIdx].items[iIdx].subItems[subIdx].quantityValue = val;
+            updateDashboard();
+        }
+
+        function updateSubText(sIdx, iIdx, subIdx, field, val) {
+            auditSchema[sIdx].items[iIdx].subItems[subIdx][field] = val;
+        }
+
+        function markAllYes() {
+            auditSchema.forEach(sec => {
+                sec.items.forEach(item => {
+                    item.subItems.forEach(sub => {
+                        if (sub.status !== 'TB') {
+                            sub.status = sub.reverseScore ? 'TIADA' : 'YA';
+                        }
+                    });
+                });
+            });
+            renderAuditForm();
+            updateDashboard();
+            showToast('Semua kriteria (kecuali TB) ditanda sebagai patuh.');
+        }
+
+        function syncMetadata() {
+            const jab = document.getElementById('meta-jabatan')?.value || 'Unit Belum Dinamakan';
+            const lbl = document.getElementById('kpi-dept-label');
+            if (lbl) lbl.textContent = jab || 'Tiada Unit Dipilih';
+        }
+
+        // Pengurusan Lampiran Gambar Pemeriksaan
+        function getPhotoDisplaySrc(photo) {
+            if (!photo) return '';
+            if (photo.dataUrl && photo.dataUrl.startsWith('data:image')) return photo.dataUrl;
+            if (photo.driveId) return `https://drive.google.com/thumbnail?id=${encodeURIComponent(photo.driveId)}&sz=w1000`;
+            if (photo.driveUrl) {
+                const match = photo.driveUrl.match(/\/d\/([a-zA-Z0-9_-]+)/) || photo.driveUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+                if (match && match[1]) {
+                    return `https://drive.google.com/thumbnail?id=${encodeURIComponent(match[1])}&sz=w1000`;
+                }
+                return photo.driveUrl;
+            }
+            return '';
+        }
+
+        function compressImageFile(file, maxDim = 480, quality = 0.45) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = ev => {
+                    const img = new Image();
+                    img.onload = () => {
+                        let w = img.width;
+                        let h = img.height;
+                        if (w > maxDim || h > maxDim) {
+                            if (w > h) {
+                                h = Math.round((h * maxDim) / w);
+                                w = maxDim;
+                            } else {
+                                w = Math.round((w * maxDim) / h);
+                                h = maxDim;
+                            }
+                        }
+                        const canvas = document.createElement('canvas');
+                        canvas.width = w;
+                        canvas.height = h;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, w, h);
+                        resolve(canvas.toDataURL('image/jpeg', quality));
+                    };
+                    img.onerror = reject;
+                    img.src = ev.target.result;
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+        async function handlePhotoUpload(event) {
+            const files = Array.from(event.target.files || []);
+            if (!files.length) return;
+            for (const file of files) {
+                try {
+                    const compressedDataUrl = await compressImageFile(file);
+                    auditPhotos.push({
+                        id: 'IMG-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
+                        dataUrl: compressedDataUrl,
+                        caption: ''
+                    });
+                } catch (err) {
+                    console.error('Gagal memproses gambar:', err);
+                }
+            }
+            event.target.value = '';
+            renderFormPhotos();
+            showToast(`${files.length} gambar pemeriksaan berjaya dimuat naik.`);
+        }
+
+        function updatePhotoCaption(idx, val) {
+            if (auditPhotos[idx]) auditPhotos[idx].caption = val;
+        }
+
+        function removeAuditPhoto(idx) {
+            const targetPhoto = auditPhotos[idx];
+            if (targetPhoto && targetPhoto.driveId) {
+                window.deletePhotoFromCloud(targetPhoto.driveId);
+            }
+            auditPhotos.splice(idx, 1);
+            renderFormPhotos();
+            if (activeCloudDocId) {
+                saveCurrentAuditToRecords();
+            }
+            showToast('Gambar pemeriksaan telah dipadam daripada borang & Google Drive.');
+        }
+
+        function renderFormPhotos() {
+            const container = document.getElementById('form-photos-container');
+            if (!container) return;
+            if (!auditPhotos.length) {
+                container.innerHTML = `
+                    <div class="col-span-full border-2 border-dashed border-slate-200 rounded-xl p-6 text-center text-xs text-slate-500">
+                        Belum ada gambar pemeriksaan dimuat naik. Klik <strong>Ambil Gambar (Kamera)</strong> atau <strong>Pilih Fail Gambar</strong> di atas.
+                    </div>
+                `;
+                return;
+            }
+            container.innerHTML = auditPhotos.map((p, idx) => {
+                const imgSrc = getPhotoDisplaySrc(p);
+                return `
+                <div class="border border-slate-200 rounded-xl p-3 bg-slate-50 space-y-2.5 flex flex-col">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-extrabold text-slate-800 bg-white px-2.5 py-0.5 rounded-md border border-slate-200">Gambar #${idx + 1}</span>
+                        <button type="button" onclick="removeAuditPhoto(${idx})" class="text-xs font-semibold text-rose-600 hover:text-rose-800 inline-flex items-center gap-1">
+                            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                            <span>Padam</span>
+                        </button>
+                    </div>
+                    <div class="w-full h-48 bg-slate-200 rounded-lg overflow-hidden flex items-center justify-center">
+                        ${imgSrc
+                            ? `<img src="${imgSrc}" alt="Gambar Pemeriksaan ${idx + 1}" onerror="this.onerror=null;this.parentElement.innerHTML='<span class=\\'text-xs text-slate-500 p-3 text-center\\'>Gambar gagal dimuatkan. Sila muat naik semula jika perlu.</span>';" class="w-full h-full object-contain">`
+                            : `<span class="text-xs text-slate-500 p-3 text-center">Tiada sumber gambar ditemui.</span>`
+                        }
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Ulasan / Keterangan Gambar #${idx + 1}:</label>
+                        <textarea rows="2" oninput="updatePhotoCaption(${idx}, this.value)" placeholder="Nyatakan lokasi & penemuan bagi gambar ini..." class="w-full rounded-lg border border-slate-300 bg-white p-2 text-xs focus:ring-2 focus:ring-blue-600 outline-none">${escapeHtml(p.caption)}</textarea>
+                    </div>
+                </div>
+            `;
+            }).join('');
+            if (window.lucide) lucide.createIcons();
+        }
+
+        // =========================================================================
+        // 5. DASHBOARD, SIMPANAN REKOD & PENGESAHAN PADAM
+        // =========================================================================
+        function updateDashboard() {
+            const m = calculateMetrics();
+            const jabatanVal = document.getElementById('meta-jabatan')?.value.trim();
+
+            const scoreEl = document.getElementById('kpi-score');
+            const badgeEl = document.getElementById('kpi-status-badge');
+            const deptEl = document.getElementById('kpi-dept-label');
+            const yaEl = document.getElementById('kpi-ya-count');
+            const totEl = document.getElementById('kpi-total-items');
+            const tiadaEl = document.getElementById('kpi-tiada-count');
+            const eqEl = document.getElementById('kpi-equipment-total');
+
+            if (scoreEl) scoreEl.textContent = `${m.scorePct}%`;
+            if (deptEl) deptEl.textContent = jabatanVal || 'Borang Baharu (Belum Diisi)';
+            if (yaEl) yaEl.textContent = m.yaCount;
+            if (totEl) totEl.textContent = `/ ${m.totalSubItems} item dinilai`;
+            if (tiadaEl) tiadaEl.textContent = m.tiadaCount;
+            if (eqEl) eqEl.textContent = m.totalEquipment;
+
+            if (badgeEl) {
+                if (m.evaluatedCount === 0) {
+                    badgeEl.textContent = 'Belum Dinilai';
+                    badgeEl.className = 'text-xs font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700';
+                } else if (m.scorePct >= 80) {
+                    badgeEl.textContent = 'Memuaskan';
+                    badgeEl.className = 'text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800';
+                } else if (m.scorePct >= 60) {
+                    badgeEl.textContent = 'Perlu Perhatian';
+                    badgeEl.className = 'text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800';
+                } else {
+                    badgeEl.textContent = 'Kritikal';
+                    badgeEl.className = 'text-xs font-semibold px-2 py-0.5 rounded-full bg-rose-100 text-rose-800';
+                }
+            }
+
+            const extEl = document.getElementById('stat-extinguisher');
+            const detEl = document.getElementById('stat-detectors');
+            const emgEl = document.getElementById('stat-emglight');
+            const trnEl = document.getElementById('stat-trained');
+            if (extEl) extEl.textContent = `${m.extinguisherUnits} Unit`;
+            if (detEl) detEl.textContent = `${m.detectorUnits} Unit`;
+            if (emgEl) emgEl.textContent = `${m.emgLightUnits} Unit`;
+            if (trnEl) trnEl.textContent = `${m.trainedStaffCount} Orang`;
+
+            const barsContainer = document.getElementById('section-breakdown-bars');
+            if (barsContainer) {
+                barsContainer.innerHTML = m.sectionStats.map(s => `
+                    <div>
+                        <div class="flex items-center justify-between text-xs font-bold mb-1.5">
+                            <span class="text-slate-800">${escapeHtml(s.title)}</span>
+                            <span class="text-slate-600">${s.ya}/${s.evaluated} Patuh (${s.pct}%)</span>
+                        </div>
+                        <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                            <div class="h-full rounded-full transition-all duration-500 ${
+                                s.pct >= 80 ? 'bg-emerald-600' : s.pct >= 60 ? 'bg-amber-500' : 'bg-rose-600'
+                            }" style="width: ${s.pct}%"></div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            const ncBadge = document.getElementById('noncompliance-badge');
+            const ncList = document.getElementById('noncompliance-list');
+            if (ncBadge) ncBadge.textContent = `${m.nonCompliances.length} Isu`;
+            if (ncList) {
+                if (!m.nonCompliances.length) {
+                    ncList.innerHTML = `<div class="p-4 bg-slate-50 rounded-xl border border-slate-200/70 text-xs text-slate-500 text-center">Tiada isu ketidakpatuhan direkodkan buat masa ini.</div>`;
+                } else {
+                    ncList.innerHTML = m.nonCompliances.map(nc => `
+                        <div class="p-3 bg-rose-50/70 border border-rose-200 rounded-xl space-y-1">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[11px] font-extrabold text-rose-800 uppercase">Bhg ${escapeHtml(nc.section)} • No. ${escapeHtml(nc.itemNo)}</span>
+                                <span class="text-[10px] font-bold bg-rose-600 text-white px-2 py-0.5 rounded">${escapeHtml(nc.statusText || 'TIADA')}</span>
+                            </div>
+                            <p class="text-xs font-bold text-slate-900">${escapeHtml(nc.itemTitle)}</p>
+                            <p class="text-xs text-slate-700">${escapeHtml(nc.label)}</p>
+                            ${nc.kenyataan ? `<p class="text-[11px] text-rose-800 italic">Catatan: ${escapeHtml(nc.kenyataan)}</p>` : ''}
+                        </div>
+                    `).join('');
+                }
+            }
+
+            const tbody = document.getElementById('audit-records-tbody');
+            if (tbody) {
+                const records = window.historicalAudits || [];
+                if (!records.length) {
+                    tbody.innerHTML = `
+                        <tr>
+                            <td colspan="6" class="py-8 px-4 text-center text-xs sm:text-sm text-slate-500">
+                                Tiada rekod audit disimpan lagi. Klik <strong>Audit Baharu</strong> atau isi tab <strong>Borang Audit</strong> untuk memulakan pemeriksaan.
+                            </td>
+                        </tr>
+                    `;
+                } else {
+                    tbody.innerHTML = records.map(rec => {
+                        const statusBadge = rec.verificationStatus === 'VERIFIED'
+                            ? `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">Disahkan (${escapeHtml(rec.verifiedDate || '')})</span>`
+                            : rec.verificationStatus === 'SUBMITTED'
+                                ? `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-800">Menunggu Pengesahan</span>`
+                                : `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700">Draf</span>`;
+
+                        return `
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="py-3.5 px-4 font-bold text-slate-900">${escapeHtml(rec.jabatan || '-')}</td>
+                                <td class="py-3.5 px-4 text-slate-600">${escapeHtml(rec.tarikh || '-')}</td>
+                                <td class="py-3.5 px-4 text-slate-700">${escapeHtml(rec.juruaudit || '-')}</td>
+                                <td class="py-3.5 px-4">
+                                    <span class="font-extrabold ${rec.skor >= 80 ? 'text-emerald-700' : rec.skor >= 60 ? 'text-amber-700' : 'text-rose-700'}">${rec.skor}%</span>
+                                </td>
+                                <td class="py-3.5 px-4">${statusBadge}</td>
+                                <td class="py-3.5 px-4 text-right space-x-1.5 whitespace-nowrap">
+                                    <button onclick="loadRecordIntoView('${escapeHtml(rec.id)}')" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 transition-colors">
+                                        Buka Laporan
+                                    </button>
+                                    <button onclick="requestDeleteRecord('${escapeHtml(rec.id)}')" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 hover:bg-rose-100 text-slate-600 hover:text-rose-700 transition-colors">
+                                        Padam
+                                    </button>
+                                </td>
+                            </tr>
+                        `;
+                    }).join('');
+                }
+            }
+        }
+
+        function resetFormToBlank() {
+            activeCloudDocId = null;
+            ['meta-jabatan', 'meta-tarikh', 'meta-juruaudit', 'meta-auditee', 'meta-ulasan', 'meta-cadangan',
+             'sign-penyedia-nama', 'sign-penyedia-jawatan', 'sign-pengesah-nama', 'sign-pengesah-jawatan',
+             'sign-pengesah-whatsapp', 'sign-pengesah-emel', 'sign-pengesah-tarikh'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.value = '';
+            });
+
+            auditSchema.forEach(sec => {
+                sec.items.forEach(item => {
+                    if ('quantityValue' in item) item.quantityValue = '';
+                    item.subItems.forEach(sub => {
+                        if ('quantityValue' in sub) sub.quantityValue = '';
+                        sub.status = '';
+                        sub.kenyataan = '';
+                        sub.cadangan = '';
+                    });
+                });
+            });
+            verificationState = { status: "PENDING", verifiedDate: "", signatureDataUrl: "", auditorSignatureDataUrl: "", verificationCode: "", securityToken: "", auditRefNo: "" };
+            clearAuditorSignaturePad();
+            auditPhotos = [];
+            (window.historicalAudits || []).forEach(r => r.isCurrent = false);
+
+            renderAuditForm();
+            renderFormPhotos();
+            updateDashboard();
+            renderOfficialReport();
+        }
+
+        function startNewAudit() {
+            resetFormToBlank();
+            switchTab('form');
+            showToast('Borang audit kosong baharu telah disediakan.');
+        }
+
+        function saveCurrentAuditToRecords() {
+            const jabatan = document.getElementById('meta-jabatan').value.trim();
+            if (!jabatan) {
+                showToast('Sila isi nama Jabatan / Unit / Wad terlebih dahulu.', 'error');
+                return;
+            }
+
+            const m = calculateMetrics();
+            const docId = activeCloudDocId || ('AUD-' + Date.now());
+            activeCloudDocId = docId;
+
+            const recordObj = {
+                id: docId,
+                jabatan: jabatan,
+                tarikh: document.getElementById('meta-tarikh').value || new Date().toISOString().split('T')[0],
+                juruaudit: document.getElementById('meta-juruaudit').value.trim(),
+                auditee: document.getElementById('meta-auditee').value.trim(),
+                ulasan: document.getElementById('meta-ulasan').value.trim(),
+                cadangan: document.getElementById('meta-cadangan').value.trim(),
+                penyediaNama: document.getElementById('sign-penyedia-nama').value.trim(),
+                penyediaJawatan: document.getElementById('sign-penyedia-jawatan').value.trim(),
+                pengesahNama: document.getElementById('sign-pengesah-nama').value.trim(),
+                pengesahJawatan: document.getElementById('sign-pengesah-jawatan').value.trim(),
+                pengesahWhatsapp: document.getElementById('sign-pengesah-whatsapp').value.trim(),
+                pengesahEmel: document.getElementById('sign-pengesah-emel').value.trim(),
+                skor: m.scorePct,
+                verificationStatus: verificationState.status,
+                verifiedDate: verificationState.verifiedDate,
+                verificationCode: verificationState.verificationCode,
+                securityToken: verificationState.securityToken,
+                auditRefNo: ensureAuditRefNo(),
+                signatureDataUrl: verificationState.signatureDataUrl,
+                auditorSignatureDataUrl: getAuditorSignatureDataUrl(),
+                schemaData: JSON.stringify(auditSchema),
+                photos: auditPhotos.map(p => ({ ...p })),
+                pendingCloudSync: true,
+                isCurrent: true
+            };
+
+            const list = window.historicalAudits || [];
+            list.forEach(r => r.isCurrent = false);
+            const idx = list.findIndex(r => r.id === docId);
+            if (idx >= 0) {
+                list[idx] = recordObj;
+            } else {
+                list.unshift(recordObj);
+            }
+            window.historicalAudits = list;
+            window.saveLocalBackup();
+            updateDashboard();
+            window.syncRecordToCloud(recordObj);
+            showToast(`Rekod "${jabatan}" berjaya disimpan.`);
+        }
+
+        function saveAndViewReport() {
+            saveCurrentAuditToRecords();
+            switchTab('report');
+        }
+
+        function loadRecordIntoView(id) {
+            const rec = (window.historicalAudits || []).find(r => r.id === id);
+            if (!rec) return;
+
+            activeCloudDocId = rec.id;
+            (window.historicalAudits || []).forEach(r => r.isCurrent = (r.id === id));
+
+            document.getElementById('meta-jabatan').value = rec.jabatan || '';
+            document.getElementById('meta-tarikh').value = rec.tarikh || '';
+            document.getElementById('meta-juruaudit').value = rec.juruaudit || '';
+            document.getElementById('meta-auditee').value = rec.auditee || '';
+            document.getElementById('meta-ulasan').value = rec.ulasan || '';
+            document.getElementById('meta-cadangan').value = rec.cadangan || '';
+            document.getElementById('sign-penyedia-nama').value = rec.penyediaNama || '';
+            document.getElementById('sign-penyedia-jawatan').value = rec.penyediaJawatan || '';
+            document.getElementById('sign-pengesah-nama').value = rec.pengesahNama || '';
+            document.getElementById('sign-pengesah-jawatan').value = rec.pengesahJawatan || '';
+            document.getElementById('sign-pengesah-whatsapp').value = rec.pengesahWhatsapp || '';
+            document.getElementById('sign-pengesah-emel').value = rec.pengesahEmel || '';
+            document.getElementById('sign-pengesah-tarikh').value = rec.verifiedDate || '';
+
+            if (rec.schemaData) {
+                try {
+                    const parsed = JSON.parse(rec.schemaData);
+                    parsed.forEach((sec, sIdx) => {
+                        if (!auditSchema[sIdx]) return;
+                        sec.items.forEach((item, iIdx) => {
+                            if (!auditSchema[sIdx].items[iIdx]) return;
+                            if ('quantityValue' in item) auditSchema[sIdx].items[iIdx].quantityValue = item.quantityValue || '';
+                            item.subItems.forEach((sub, subIdx) => {
+                                if (!auditSchema[sIdx].items[iIdx].subItems[subIdx]) return;
+                                const targetSub = auditSchema[sIdx].items[iIdx].subItems[subIdx];
+                                if ('quantityValue' in sub) targetSub.quantityValue = sub.quantityValue || '';
+                                targetSub.status = sub.status || '';
+                                targetSub.kenyataan = sub.kenyataan || '';
+                                targetSub.cadangan = sub.cadangan || '';
+                            });
+                        });
+                    });
+                } catch (e) {
+                    console.error('Gagal memulihkan data skema:', e);
+                }
+            }
+
+            auditPhotos = Array.isArray(rec.photos) ? rec.photos.map(p => ({ ...p })) : [];
+            verificationState = {
+                status: rec.verificationStatus || "PENDING",
+                verifiedDate: rec.verifiedDate || "",
+                signatureDataUrl: rec.signatureDataUrl || "",
+                auditorSignatureDataUrl: rec.auditorSignatureDataUrl || "",
+                verificationCode: rec.verificationCode || "",
+                securityToken: rec.securityToken || "",
+                auditRefNo: rec.auditRefNo || generateAuditRefNo()
+            };
+            loadAuditorSignatureToCanvas(verificationState.auditorSignatureDataUrl);
+
+            renderAuditForm();
+            renderFormPhotos();
+            updateDashboard();
+            switchTab('report');
+        }
+
+        // Pengesahan Padam Borang (Default fokus pada "Batal")
+        function requestDeleteCurrentForm() {
+            pendingDeleteTarget = { type: 'current' };
+            document.getElementById('delete-modal-title').textContent = 'Padam / Kosongkan Borang Semasa?';
+            document.getElementById('delete-modal-desc').textContent = 'Semua maklumat, skor penilaian, dan gambar dalam borang semasa akan dipadamkan. Sila sahkan tindakan anda.';
+            openDeleteModal();
+        }
+
+        function requestDeleteRecord(id) {
+            const rec = (window.historicalAudits || []).find(r => r.id === id);
+            pendingDeleteTarget = { type: 'record', id };
+            document.getElementById('delete-modal-title').textContent = 'Padam Rekod Audit?';
+            document.getElementById('delete-modal-desc').textContent = `Adakah anda pasti mahu memadam rekod "${rec ? rec.jabatan : 'ini'}"? Tindakan ini tidak boleh dikembalikan.`;
+            openDeleteModal();
+        }
+
+        function openDeleteModal() {
+            const modal = document.getElementById('delete-confirm-modal');
+            if (!modal) return;
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                const cancelBtn = document.getElementById('btn-delete-cancel');
+                if (cancelBtn) cancelBtn.focus();
+            }, 30);
+        }
+
+        function closeDeleteModal() {
+            pendingDeleteTarget = null;
+            const modal = document.getElementById('delete-confirm-modal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function executeDeleteConfirmed() {
+            if (!pendingDeleteTarget) {
+                closeDeleteModal();
+                return;
+            }
+            if (pendingDeleteTarget.type === 'current') {
+                const currentId = activeCloudDocId;
+                if (currentId) {
+                    window.historicalAudits = (window.historicalAudits || []).filter(r => r.id !== currentId);
+                    window.saveLocalBackup();
+                    window.deleteRecordFromCloud(currentId);
+                }
+                resetFormToBlank();
+                showToast('Borang telah dipadamkan dan dikosongkan.');
+            } else if (pendingDeleteTarget.type === 'record') {
+                const delId = pendingDeleteTarget.id;
+                window.historicalAudits = (window.historicalAudits || []).filter(r => r.id !== delId);
+                window.saveLocalBackup();
+                window.deleteRecordFromCloud(delId);
+                if (activeCloudDocId === delId) {
+                    resetFormToBlank();
+                } else {
+                    updateDashboard();
+                }
+                showToast('Rekod audit telah dipadamkan.');
+            }
+            closeDeleteModal();
+        }
+
+        // =========================================================================
+        // 6. TANDATANGAN DIGITAL, WHATSAPP/EMEL, GOOGLE DRIVE & LAPORAN RASMI
+        // =========================================================================
+        let hasDrawnSig = false;
+        let hasDrawnAuditorSig = false;
+
+        function bindCanvasDrawing(canvas, onDrawCallback) {
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let drawing = false;
+
+            canvas._resizeSigCanvas = function(preserveDataUrl) {
+                const rect = canvas.getBoundingClientRect();
+                const w = rect.width > 0 ? rect.width : (canvas.parentElement ? canvas.parentElement.clientWidth : 340);
+                const h = rect.height > 0 ? rect.height : 96;
+                if (w > 0 && h > 0) {
+                    canvas.width = w;
+                    canvas.height = h;
+                    ctx.strokeStyle = '#0f172a';
+                    ctx.lineWidth = canvas.id === 'auditor-signature-canvas' ? 3.2 : 2.4;
+                    ctx.lineCap = 'round';
+                    ctx.lineJoin = 'round';
+                    if (preserveDataUrl) {
+                        const img = new Image();
+                        img.onload = () => ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                        img.src = preserveDataUrl;
+                    }
+                }
+            };
+
+            function getPos(e) {
+                const rect = canvas.getBoundingClientRect();
+                const touch = e.touches ? e.touches[0] : e;
+                return { x: touch.clientX - rect.left, y: touch.clientY - rect.top };
+            }
+
+            function startDraw(e) {
+                e.preventDefault();
+                if (canvas.width === 0 || canvas.height === 0) {
+                    canvas._resizeSigCanvas();
+                }
+                drawing = true;
+                if (onDrawCallback) onDrawCallback(true);
+                const pos = getPos(e);
+                ctx.beginPath();
+                ctx.moveTo(pos.x, pos.y);
+            }
+
+            function moveDraw(e) {
+                if (!drawing) return;
+                e.preventDefault();
+                const pos = getPos(e);
+                ctx.lineTo(pos.x, pos.y);
+                ctx.stroke();
+            }
+
+            function endDraw() {
+                if (!drawing) return;
+                drawing = false;
+                if (canvas === document.getElementById('auditor-signature-canvas')) {
+                    captureAuditorSignature();
+                }
+            }
+
+            canvas.addEventListener('mousedown', startDraw);
+            canvas.addEventListener('mousemove', moveDraw);
+            window.addEventListener('mouseup', endDraw);
+            canvas.addEventListener('touchstart', startDraw, { passive: false });
+            canvas.addEventListener('touchmove', moveDraw, { passive: false });
+            canvas.addEventListener('touchend', endDraw);
+        }
+
+        function captureAuditorSignature() {
+            const canvas = document.getElementById('auditor-signature-canvas');
+            if (!canvas || canvas.width === 0 || canvas.height === 0) return;
+            try {
+                const tempCanvas = document.createElement('canvas');
+                tempCanvas.width = 420;
+                tempCanvas.height = 130;
+                const tCtx = tempCanvas.getContext('2d');
+                tCtx.clearRect(0, 0, tempCanvas.width, tempCanvas.height);
+                tCtx.drawImage(canvas, 0, 0, tempCanvas.width, tempCanvas.height);
+                const data = tempCanvas.toDataURL('image/png');
+                if (data && data.length > 200) {
+                    verificationState.auditorSignatureDataUrl = data;
+                    hasDrawnAuditorSig = true;
+                }
+            } catch (e) {}
+        }
+
+        function setupSignatureEvents() {
+            const verifierCanvas = document.getElementById('signature-canvas');
+            bindCanvasDrawing(verifierCanvas, (drawn) => { hasDrawnSig = drawn; });
+
+            const auditorCanvas = document.getElementById('auditor-signature-canvas');
+            bindCanvasDrawing(auditorCanvas, (drawn) => { hasDrawnAuditorSig = drawn; });
+            if (auditorCanvas && auditorCanvas._resizeSigCanvas) {
+                setTimeout(() => auditorCanvas._resizeSigCanvas(verificationState.auditorSignatureDataUrl), 50);
+            }
+        }
+
+        function clearAuditorSignaturePad() {
+            const canvas = document.getElementById('auditor-signature-canvas');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+            hasDrawnAuditorSig = false;
+            verificationState.auditorSignatureDataUrl = '';
+        }
+
+        function getAuditorSignatureDataUrl() {
+            if (hasDrawnAuditorSig) {
+                captureAuditorSignature();
+            }
+            return verificationState.auditorSignatureDataUrl || '';
+        }
+
+        function loadAuditorSignatureToCanvas(dataUrl) {
+            const canvas = document.getElementById('auditor-signature-canvas');
+            hasDrawnAuditorSig = Boolean(dataUrl);
+            if (!canvas) return;
+            if (canvas.width > 0 && canvas.height > 0) {
+                const ctx = canvas.getContext('2d');
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+            if (dataUrl && canvas._resizeSigCanvas) {
+                setTimeout(() => canvas._resizeSigCanvas(dataUrl), 40);
+            }
+        }
+
+        function openSignatureModal() {
+            if (verificationState.status === 'VERIFIED') {
+                showToast("Laporan ini telah disahkan dan dikunci daripada sebarang perubahan.", "error");
+                return;
+            }
+            const modal = document.getElementById('signature-modal');
+            if (!modal) return;
+            const today = new Date().toISOString().split('T')[0];
+            const refNo = ensureAuditRefNo();
+            const unitName = document.getElementById('meta-jabatan').value.trim() || 'Unit Belum Dinamakan';
+            const auditorName = document.getElementById('meta-juruaudit').value.trim() || '-';
+
+            const refBadge = document.getElementById('modal-audit-ref-badge');
+            const refUnitEl = document.getElementById('modal-ref-unit-label');
+            const refAuditorEl = document.getElementById('modal-ref-auditor-label');
+            if (refBadge) refBadge.textContent = `Ruj: ${refNo}`;
+            if (refUnitEl) refUnitEl.textContent = unitName;
+            if (refAuditorEl) refAuditorEl.textContent = auditorName;
+
+            document.getElementById('modal-pengesah-nama').value = document.getElementById('sign-pengesah-nama').value || '';
+            document.getElementById('modal-pengesah-jawatan').value = document.getElementById('sign-pengesah-jawatan').value || '';
+            document.getElementById('modal-pengesah-tarikh').value = today;
+
+            const regWa = (document.getElementById('sign-pengesah-whatsapp').value || '').replace(/\D/g, '');
+            const regEmail = (document.getElementById('sign-pengesah-emel').value || '').trim();
+            const secBox = document.getElementById('modal-security-check-box');
+            const pinInput = document.getElementById('modal-pengesah-verify-pin');
+            if (pinInput) pinInput.value = '';
+            if (secBox) {
+                if (regWa.length >= 4 || regEmail.length > 0) {
+                    secBox.classList.remove('hidden');
+                } else {
+                    secBox.classList.add('hidden');
+                }
+            }
+
+            modal.classList.remove('hidden');
+
+            setTimeout(() => {
+                const canvas = document.getElementById('signature-canvas');
+                if (canvas && canvas._resizeSigCanvas) {
+                    canvas._resizeSigCanvas();
+                    hasDrawnSig = false;
+                }
+            }, 30);
+        }
+
+        function closeSignatureModal() {
+            const modal = document.getElementById('signature-modal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function clearSignaturePad() {
+            const canvas = document.getElementById('signature-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            hasDrawnSig = false;
+        }
+
+        function confirmDigitalVerification() {
+            const nama = document.getElementById('modal-pengesah-nama').value.trim();
+            const jawatan = document.getElementById('modal-pengesah-jawatan').value.trim();
+            const consent = document.getElementById('modal-verify-consent').checked;
+
+            const regWa = (document.getElementById('sign-pengesah-whatsapp').value || '').replace(/\D/g, '');
+            const regEmail = (document.getElementById('sign-pengesah-emel').value || '').trim().toLowerCase();
+            const enteredPin = (document.getElementById('modal-pengesah-verify-pin').value || '').trim().toLowerCase();
+
+            if (regWa.length >= 4 || regEmail.length > 0) {
+                const last4Wa = regWa.slice(-4);
+                const enteredDigits = enteredPin.replace(/\D/g, '');
+                const matchesWa = last4Wa.length === 4 && enteredDigits.endsWith(last4Wa);
+                const matchesEmail = regEmail.length > 0 && enteredPin === regEmail;
+                if (!matchesWa && !matchesEmail) {
+                    showToast("Pengesahan identiti gagal. Sila masukkan 4 digit terakhir no. telefon atau e-mel rasmi pengesah yang didaftarkan.", "error");
+                    return;
+                }
+            }
+
+            if (!nama) {
+                showToast("Sila masukkan nama pegawai pengesah.", "error");
+                return;
+            }
+            if (!consent) {
+                showToast("Sila tandakan kotak perakuan pengesahan.", "error");
+                return;
+            }
+
+            const canvas = document.getElementById('signature-canvas');
+            const sigData = hasDrawnSig && canvas ? canvas.toDataURL('image/png') : (verificationState.signatureDataUrl || '');
+            const today = new Date().toISOString().split('T')[0];
+            const code = verificationState.verificationCode || ('MGH-VER-' + Date.now().toString().slice(-6));
+
+            document.getElementById('sign-pengesah-nama').value = nama;
+            document.getElementById('sign-pengesah-jawatan').value = jawatan;
+            document.getElementById('sign-pengesah-tarikh').value = today;
+
+            verificationState = {
+                status: 'VERIFIED',
+                verifiedDate: today,
+                signatureDataUrl: sigData,
+                auditorSignatureDataUrl: getAuditorSignatureDataUrl(),
+                verificationCode: code,
+                securityToken: verificationState.securityToken || '',
+                auditRefNo: ensureAuditRefNo()
+            };
+
+            closeSignatureModal();
+            saveCurrentAuditToRecords();
+            renderOfficialReport();
+            showToast(`Laporan berjaya disahkan secara digital & dikunci oleh ${nama} pada ${today}.`);
+        }
+
+        function submitForVerification() {
+            const jabatan = document.getElementById('meta-jabatan').value.trim();
+            if (!jabatan) {
+                showToast("Sila isi nama Jabatan / Unit / Wad sebelum menghantar untuk pengesahan.", "error");
+                return;
+            }
+            const auditorSig = getAuditorSignatureDataUrl();
+            if (!auditorSig) {
+                showToast("Sila turunkan tandatangan digital juruaudit sebelum menghantar kepada pegawai pengesah.", "error");
+                return;
+            }
+            if (verificationState.status !== 'VERIFIED') {
+                verificationState.status = 'SUBMITTED';
+                ensureAuditRefNo();
+                if (!verificationState.securityToken) {
+                    verificationState.securityToken = generateSecurityToken();
+                }
+            }
+            saveCurrentAuditToRecords();
+            switchTab('report');
+            showToast("Laporan telah ditandatangani oleh juruaudit & dihantar (Submit) untuk pengesahan.");
+        }
+
+        function unlockReportForEditing() {
+            verificationState.status = 'SUBMITTED';
+            verificationState.verifiedDate = '';
+            verificationState.signatureDataUrl = '';
+            verificationState.verificationCode = '';
+            const tarikhEl = document.getElementById('sign-pengesah-tarikh');
+            if (tarikhEl) tarikhEl.value = '';
+            saveCurrentAuditToRecords();
+            renderOfficialReport();
+            showToast("Laporan telah dibuka kunci untuk penyuntingan semula.");
+        }
+
+        function buildVerifierNotificationText() {
+            const jabatan = document.getElementById('meta-jabatan').value.trim() || '-';
+            const tarikh = document.getElementById('meta-tarikh').value || '-';
+            const juruaudit = document.getElementById('meta-juruaudit').value.trim() || '-';
+            const pengesah = document.getElementById('sign-pengesah-nama').value.trim() || 'Tuan/Puan';
+            const refNo = ensureAuditRefNo();
+            const m = calculateMetrics();
+            const directLink = buildVerificationDirectLink();
+
+            return `Assalamualaikum & Salam Sejahtera ${pengesah},\n\n` +
+                `*MAKLUMAN RASMI PENGESAHAN LAPORAN AUDIT KESELAMATAN KEBAKARAN — HOSPITAL MIRI*\n` +
+                `No. Rujukan Audit: *${refNo}*\n` +
+                `Jabatan / Unit / Wad: *${jabatan}*\n` +
+                `Tarikh Audit: ${tarikh}\n` +
+                `Juruaudit: ${juruaudit}\n` +
+                `Skor Pematuhan: *${m.scorePct}%* (${m.yaCount}/${m.evaluatedCount} kriteria patuh)\n\n` +
+                `Sila klik pautan rasmi di bawah untuk menyemak laporan dan menurunkan pengesahan digital:\n${directLink}\n\n` +
+                `_(Notis Keselamatan Rasmi Hospital Miri: Pastikan No. Rujukan ${refNo} sepadan pada skrin. Sistem ini TIDAK meminta kata laluan e-mel atau maklumat peribadi sensitif.)_`;
+        }
+
+        function sendVerifierWhatsApp() {
+            const rawPhone = (document.getElementById('sign-pengesah-whatsapp').value || '').replace(/\D/g, '');
+            const text = buildVerifierNotificationText();
+            if (rawPhone) {
+                const formattedPhone = rawPhone.startsWith('0') ? '6' + rawPhone : rawPhone;
+                window.open(`https://wa.me/${formattedPhone}?text=${encodeURIComponent(text)}`, '_blank');
+            } else {
+                window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+            }
+        }
+
+        function sendVerifierEmail() {
+            const email = (document.getElementById('sign-pengesah-emel').value || '').trim();
+            const jabatan = document.getElementById('meta-jabatan').value.trim() || 'Unit/Wad';
+            const refNo = ensureAuditRefNo();
+            const subject = `[RASMI] Pengesahan Laporan Audit Keselamatan Kebakaran (${refNo}) - ${jabatan}`;
+            const body = buildVerifierNotificationText().replace(/\*/g, '');
+            window.location.href = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        function copyVerifierMessage() {
+            const text = buildVerifierNotificationText();
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            showToast('Teks pemakluman & pautan pengesahan rasmi berjaya disalin.');
+        }
+
+        async function saveToGoogleDrive() {
+            renderOfficialReport();
+            const btn = document.getElementById('btn-save-gdrive-pdf');
+            const originalHtml = btn ? btn.innerHTML : '';
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i><span>Menjana & Menyimpan PDF...</span>`;
+                if (window.lucide) lucide.createIcons();
+            }
+
+            try {
+                const reportArea = document.getElementById('printable-report-area');
+                const clone = reportArea.cloneNode(true);
+                clone.querySelectorAll('.no-print').forEach(el => el.remove());
+
+                const jabatan = (document.getElementById('meta-jabatan').value.trim() || 'Unit_MGH').replace(/[^a-zA-Z0-9_-]/g, '_');
+                const tarikh = document.getElementById('meta-tarikh').value || new Date().toISOString().split('T')[0];
+                const yearMatch = String(tarikh).match(/^(\d{4})/);
+                const auditYear = yearMatch ? yearMatch[1] : String(new Date().getFullYear());
+                const fileName = `Laporan_Audit_Kebakaran_${jabatan}_${tarikh}`;
+
+                const pdfHtml = `<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page { size: A4 portrait; margin: 12mm; }
+  body { font-family: Helvetica, Arial, sans-serif; font-size: 9.5pt; color: #0f172a; line-height: 1.35; }
+  h1 { font-size: 13pt; margin: 2px 0; text-transform: uppercase; }
+  h2 { font-size: 11pt; margin: 2px 0; color: #991b1b; text-transform: uppercase; }
+  h3 { font-size: 9.5pt; margin: 0; text-transform: uppercase; }
+  p { margin: 3px 0; }
+  table { border-collapse: collapse; width: 100%; margin-bottom: 10px; }
+  th, td { border: 1px solid #1e293b; padding: 5px 6px; vertical-align: top; text-align: left; }
+  th { background-color: #f1f5f9; font-weight: bold; }
+  .bg-slate-800 { background-color: #1e293b; color: #ffffff; padding: 5px 8px; }
+  .bg-slate-100 { background-color: #f1f5f9; }
+  .text-center { text-align: center; }
+  .font-bold, .font-extrabold { font-weight: bold; }
+  .uppercase { text-transform: uppercase; }
+  .border { border: 1px solid #1e293b; padding: 8px; margin-bottom: 8px; }
+  .grid { width: 100%; }
+  img { max-width: 240px; max-height: 170px; object-fit: contain; display: block; margin: 4px 0; }
+  svg { width: 68px; height: 68px; }
+</style>
+</head>
+<body>${clone.innerHTML}</body>
+</html>`;
+
+                const gasUrl = getActiveGasUrl();
+                const res = await fetch(gasUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({
+                        action: 'savePdf',
+                        year: auditYear,
+                        fileName: fileName,
+                        htmlContent: pdfHtml
+                    })
+                });
+                const result = await res.json();
+                if (result && result.status === 'pdf_saved') {
+                    showToast(`PDF berjaya disimpan ke Google Drive dalam folder tahun "${result.year}"!`);
+                    if (result.folderUrl) {
+                        window.open(result.folderUrl, '_blank');
+                    } else {
+                        window.open(`https://drive.google.com/drive/folders/${PDF_ARCHIVE_FOLDER_ID}?usp=drive_link`, '_blank');
+                    }
+                } else {
+                    throw new Error('Respons tidak sah daripada Google Apps Script');
+                }
+            } catch (err) {
+                console.error('Gagal menyimpan PDF ke Google Drive:', err);
+                showToast('Sila kemas kini Kod Google Apps Script (Langkah 1) untuk mengaktifkan penukaran PDF terus ke Google Drive.', 'error');
+                window.open(`https://drive.google.com/drive/folders/${PDF_ARCHIVE_FOLDER_ID}?usp=drive_link`, '_blank');
+            } finally {
+                if (btn) {
+                    btn.disabled = false;
+                    btn.innerHTML = originalHtml;
+                    if (window.lucide) lucide.createIcons();
+                }
+            }
+        }
+
+        function renderOfficialReport() {
+            const m = calculateMetrics();
+            const jabatan = document.getElementById('meta-jabatan').value.trim() || '-';
+            const tarikh = document.getElementById('meta-tarikh').value || '-';
+            const juruaudit = document.getElementById('meta-juruaudit').value.trim() || '-';
+            const auditee = document.getElementById('meta-auditee').value.trim() || '-';
+
+            document.getElementById('rep-jabatan').textContent = jabatan;
+            document.getElementById('rep-tarikh').textContent = tarikh;
+            document.getElementById('rep-juruaudit').textContent = juruaudit;
+            document.getElementById('rep-auditee').textContent = auditee;
+            document.getElementById('rep-skor').textContent = `${m.scorePct}% (${m.yaCount} Ada/Ya daripada ${m.evaluatedCount} kriteria dinilai)`;
+            document.getElementById('rep-ringkasan').textContent = `${m.yaCount} Patuh | ${m.tiadaCount} Tidak Patuh${m.tbCount > 0 ? ` | ${m.tbCount} TB` : ''}`;
+
+            document.getElementById('rep-ulasan').textContent = document.getElementById('meta-ulasan').value.trim() || '-';
+            document.getElementById('rep-cadangan').textContent = document.getElementById('meta-cadangan').value.trim() || '-';
+            document.getElementById('rep-sign-penyedia-nama').textContent = document.getElementById('sign-penyedia-nama').value.trim() || '-';
+            document.getElementById('rep-sign-penyedia-jawatan').textContent = document.getElementById('sign-penyedia-jawatan').value.trim() || '-';
+
+            const auditorSigData = getAuditorSignatureDataUrl();
+            const auditorSigImg = document.getElementById('rep-auditor-signature-img');
+            const auditorSignBadge = document.getElementById('rep-auditor-sign-badge');
+            if (auditorSigImg) {
+                if (auditorSigData) {
+                    auditorSigImg.src = auditorSigData;
+                    auditorSigImg.classList.remove('hidden');
+                    if (auditorSignBadge) auditorSignBadge.classList.remove('hidden');
+                } else {
+                    auditorSigImg.classList.add('hidden');
+                    if (auditorSignBadge) auditorSignBadge.classList.add('hidden');
+                }
+            }
+
+            const pengesahNama = document.getElementById('sign-pengesah-nama').value.trim() || '-';
+            const pengesahJawatan = document.getElementById('sign-pengesah-jawatan').value.trim() || '-';
+            document.getElementById('rep-sign-pengesah-nama').textContent = pengesahNama;
+            document.getElementById('rep-sign-pengesah-jawatan').textContent = pengesahJawatan;
+
+            const statusSub = document.getElementById('report-status-subtitle');
+            const verifyBadge = document.getElementById('rep-verify-badge');
+            const repAuditRefEl = document.getElementById('rep-audit-ref-no');
+            if (repAuditRefEl) repAuditRefEl.textContent = ensureAuditRefNo();
+            const sigImg = document.getElementById('rep-signature-img');
+            const stampBox = document.getElementById('rep-digital-stamp');
+            const verifyCodeEl = document.getElementById('rep-verify-code');
+            const repTarikhEl = document.getElementById('rep-sign-pengesah-tarikh');
+            const banner = document.getElementById('verifier-action-banner');
+            const bannerNama = document.getElementById('banner-pengesah-nama');
+            const btnVerify = document.getElementById('btn-verify-report');
+            const btnUnlockEdit = document.getElementById('btn-unlock-edit-report');
+
+            if (verificationState.status === 'VERIFIED') {
+                if (statusSub) {
+                    statusSub.textContent = `Status: Disahkan & Dikunci (${verificationState.verifiedDate})`;
+                    statusSub.className = 'text-xs text-emerald-700 font-bold';
+                }
+                if (verifyBadge) {
+                    verifyBadge.textContent = 'Disahkan Secara Digital';
+                    verifyBadge.className = 'text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300';
+                }
+                if (sigImg) {
+                    if (verificationState.signatureDataUrl) {
+                        sigImg.src = verificationState.signatureDataUrl;
+                        sigImg.classList.remove('hidden');
+                    } else {
+                        sigImg.classList.add('hidden');
+                    }
+                }
+                if (stampBox) stampBox.classList.remove('hidden');
+                if (verifyCodeEl) verifyCodeEl.textContent = verificationState.verificationCode || 'MGH-VER-2026';
+                if (repTarikhEl) repTarikhEl.textContent = verificationState.verifiedDate || '-';
+                if (banner) banner.classList.add('hidden');
+                if (btnVerify) {
+                    btnVerify.innerHTML = `<i data-lucide="lock" class="w-4 h-4"></i><span>Telah Disahkan (${escapeHtml(verificationState.verifiedDate)})</span>`;
+                    btnVerify.className = 'inline-flex items-center gap-2 bg-slate-200 text-slate-700 text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl cursor-not-allowed';
+                }
+                if (btnUnlockEdit) btnUnlockEdit.classList.remove('hidden');
+            } else {
+                if (statusSub) {
+                    statusSub.textContent = verificationState.status === 'SUBMITTED'
+                        ? 'Status: Dihantar — Menunggu Pengesahan Digital (Boleh Diedit)'
+                        : 'Status: Draf / Menunggu Pengesahan Digital';
+                    statusSub.className = 'text-xs text-amber-700 font-semibold';
+                }
+                if (verifyBadge) {
+                    verifyBadge.textContent = 'Belum Disahkan';
+                    verifyBadge.className = 'text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-300';
+                }
+                if (sigImg) sigImg.classList.add('hidden');
+                if (stampBox) stampBox.classList.add('hidden');
+                if (repTarikhEl) repTarikhEl.textContent = 'Belum Disahkan';
+                if (banner) {
+                    banner.classList.toggle('hidden', verificationState.status !== 'SUBMITTED');
+                }
+                if (bannerNama) bannerNama.textContent = pengesahNama;
+                if (btnVerify) {
+                    btnVerify.innerHTML = `<i data-lucide="pen-tool" class="w-4 h-4"></i><span>Sahkan Secara Digital</span>`;
+                    btnVerify.className = 'inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl shadow-sm transition-colors';
+                }
+                if (btnUnlockEdit) btnUnlockEdit.classList.add('hidden');
+            }
+
+            const tablesContainer = document.getElementById('report-tables-container');
+            if (tablesContainer) {
+                tablesContainer.innerHTML = auditSchema.map(sec => {
+                    const hasTBColumn = sec.items.some(it => it.allowTB || it.subItems.some(s => s.allowTB));
+                    return `
+                        <div>
+                            <div class="bg-slate-800 text-white px-3 py-2 border border-slate-800">
+                                <h3 class="text-xs sm:text-sm font-extrabold uppercase">${escapeHtml(sec.sectionTitle)}</h3>
+                            </div>
+                            <table class="w-full border-collapse border border-slate-800 text-xs">
+                                <thead>
+                                    <tr class="bg-slate-100 text-slate-900">
+                                        <th class="border border-slate-800 p-2 w-10 text-center">No.</th>
+                                        <th class="border border-slate-800 p-2 text-left">Perkara Yang Diaudit</th>
+                                        <th class="border border-slate-800 p-2 w-14 text-center">Ada / Ya</th>
+                                        <th class="border border-slate-800 p-2 w-14 text-center">Tiada</th>
+                                        ${hasTBColumn ? '<th class="border border-slate-800 p-2 w-12 text-center">TB</th>' : ''}
+                                        <th class="border border-slate-800 p-2 w-1/4 text-left">Kenyataan</th>
+                                        <th class="border border-slate-800 p-2 w-1/4 text-left">Cadangan Penambahbaikan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${sec.items.map(item => item.subItems.map((sub, idx) => `
+                                        <tr>
+                                            ${idx === 0 ? `<td rowspan="${item.subItems.length}" class="border border-slate-800 p-2 text-center font-bold align-top">${escapeHtml(item.no)}</td>` : ''}
+                                            <td class="border border-slate-800 p-2">
+                                                ${idx === 0 ? `<div class="font-bold text-slate-900 mb-0.5">${escapeHtml(item.title)}${item.quantityLabel ? ` (${escapeHtml(item.quantityLabel)}: ${escapeHtml(item.quantityValue || '0')})` : ''}</div>` : ''}
+                                                <div>${escapeHtml(sub.label)}${sub.quantityLabel ? ` <strong>[${escapeHtml(sub.quantityLabel)}: ${escapeHtml(sub.quantityValue || '0')}]</strong>` : ''}</div>
+                                                ${sub.note ? `<div class="text-[10px] text-slate-600 mt-0.5 leading-snug">${escapeHtml(sub.note)}</div>` : ''}
+                                            </td>
+                                            <td class="border border-slate-800 p-2 text-center font-bold ${sub.reverseScore && sub.status === 'YA' ? 'text-rose-700' : ''}">${sub.status === 'YA' ? '&#10003;' : ''}</td>
+                                            <td class="border border-slate-800 p-2 text-center font-bold ${sub.reverseScore ? 'text-emerald-700' : 'text-rose-700'}">${sub.status === 'TIADA' ? '&#10003;' : ''}</td>
+                                            ${hasTBColumn ? `<td class="border border-slate-800 p-2 text-center font-bold">${(item.allowTB || sub.allowTB) && sub.status === 'TB' ? '&#10003;' : ''}</td>` : ''}
+                                            <td class="border border-slate-800 p-2">${escapeHtml(sub.kenyataan || '-')}</td>
+                                            <td class="border border-slate-800 p-2">${escapeHtml(sub.cadangan || '-')}</td>
+                                        </tr>
+                                    `).join('')).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            const photoCountBadge = document.getElementById('rep-photo-count-badge');
+            const photosContainer = document.getElementById('report-photos-container');
+            if (photoCountBadge) photoCountBadge.textContent = `${auditPhotos.length} Gambar`;
+            if (photosContainer) {
+                if (!auditPhotos.length) {
+                    photosContainer.innerHTML = `<p class="text-xs text-slate-500 italic text-center py-3">Tiada lampiran gambar pemeriksaan disertakan.</p>`;
+                } else {
+                    photosContainer.innerHTML = `
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            ${auditPhotos.map((p, idx) => {
+                                const imgSrc = getPhotoDisplaySrc(p);
+                                return `
+                                <div class="border border-slate-400 p-2.5 flex flex-col justify-between">
+                                    <div class="flex items-center justify-between mb-1.5">
+                                        <span class="text-[11px] font-bold uppercase text-slate-800">Gambar #${idx + 1}</span>
+                                        ${p.driveUrl ? `<a href="${escapeHtml(p.driveUrl)}" target="_blank" rel="noopener" class="text-[10px] font-semibold text-blue-700 underline no-print">Buka di Drive</a>` : ''}
+                                    </div>
+                                    <div class="w-full h-48 bg-slate-100 flex items-center justify-center overflow-hidden border border-slate-300">
+                                        ${imgSrc
+                                            ? `<img src="${imgSrc}" alt="Lampiran Gambar ${idx + 1}" onerror="this.onerror=null;this.parentElement.innerHTML='<span class=\\'text-xs text-slate-500 p-2 text-center\\'>Pratonton gambar tidak tersedia.</span>';" class="max-h-full max-w-full object-contain">`
+                                            : `<span class="text-xs text-slate-500 p-2 text-center">Tiada fail gambar.</span>`
+                                        }
+                                    </div>
+                                    <p class="text-xs text-slate-900 mt-2"><strong>Ulasan:</strong> ${escapeHtml(p.caption || 'Tiada ulasan.')}</p>
+                                </div>
+                            `;
+                            }).join('')}
+                        </div>
+                    `;
+                }
+            }
+            if (window.lucide) lucide.createIcons();
+        }
+
+        // =========================================================================
+        // 7. MODAL TETAPAN GOOGLE SHEETS & SANDARAN JSON
+        // =========================================================================
+        function openCloudConfigModal() {
+            const modal = document.getElementById('cloud-config-modal');
+            if (!modal) return;
+            const scriptBox = document.getElementById('apps-script-template-box');
+            const urlInput = document.getElementById('custom-gas-url-input');
+            if (scriptBox) scriptBox.value = APPS_SCRIPT_CODE;
+            if (urlInput) urlInput.value = getActiveGasUrl();
+            modal.classList.remove('hidden');
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function closeCloudConfigModal() {
+            const modal = document.getElementById('cloud-config-modal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function copyAppsScriptCode() {
+            const box = document.getElementById('apps-script-template-box');
+            if (!box) return;
+            box.select();
+            document.execCommand('copy');
+            showToast('Kod Google Apps Script berjaya disalin.');
+        }
+
+        async function saveCustomGasUrl() {
+            const url = (document.getElementById('custom-gas-url-input')?.value || '').trim();
+            if (!url || !url.startsWith('https://script.google.com/')) {
+                showToast('Sila masukkan pautan Web App URL Google Apps Script yang sah.', 'error');
+                return;
+            }
+            localStorage.setItem(GAS_URL_STORAGE_KEY, url);
+            closeCloudConfigModal();
+            await fetchRecordsFromGoogleSheets(false);
+        }
+
+        function clearCustomGasUrl() {
+            localStorage.removeItem(GAS_URL_STORAGE_KEY);
+            const urlInput = document.getElementById('custom-gas-url-input');
+            if (urlInput) urlInput.value = DEFAULT_GAS_URL;
+            fetchRecordsFromGoogleSheets(true);
+            showToast('Kembali menggunakan pautan Google Sheets rasmi lalai.');
+        }
+
+        function exportAllAuditsJson() {
+            const dataStr = JSON.stringify(window.historicalAudits || [], null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Sandaran_Audit_Kebakaran_MGH_${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast('Fail sandaran .json berjaya dimuat turun.');
+        }
+
+        function importAllAuditsJson(event) {
+            const file = event.target.files?.[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = ev => {
+                try {
+                    const imported = JSON.parse(ev.target.result);
+                    if (!Array.isArray(imported)) throw new Error('Format tidak sah');
+                    const map = new Map((window.historicalAudits || []).map(r => [r.id, r]));
+                    imported.forEach(r => { if (r && r.id) map.set(r.id, r); });
+                    window.historicalAudits = Array.from(map.values());
+                    window.saveLocalBackup();
+                    updateDashboard();
+                    showToast(`${imported.length} rekod berjaya diimport.`);
+                } catch (err) {
+                    showToast('Fail sandaran .json tidak sah.', 'error');
+                }
+            };
+            reader.readAsText(file);
+            event.target.value = '';
+        }
+
+        // =========================================================================
+        // 8. PERMULAAN APLIKASI
+        // =========================================================================
+        window.onload = async function() {
+            setupSignatureEvents();
+            renderAuditForm();
+            renderFormPhotos();
+            updateDashboard();
+            renderOfficialReport();
+            if (window.lucide) lucide.createIcons();
+
+            const savedGasUrl = getActiveGasUrl();
+            if (savedGasUrl) {
+                await fetchRecordsFromGoogleSheets(true);
+                setInterval(() => {
+                    const dashView = document.getElementById('view-dashboard');
+                    if (dashView && !dashView.classList.contains('hidden')) {
+                        fetchRecordsFromGoogleSheets(true);
+                    }
+                }, 20000);
+            } else {
+                await checkDeepLinkVerification();
+            }
+        };
+    </script>
+</body>
+</html>
